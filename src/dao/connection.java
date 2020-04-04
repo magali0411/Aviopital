@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 
 public class connection {
 		
-		
 	private static connection instance = null;
 	private Connection connection = null;
 
