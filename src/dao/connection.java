@@ -18,7 +18,7 @@ public class connection {
 
 			try {
 				Class.forName("org.sqlite.JDBC");
-				connection = DriverManager.getConnection("jdbc:sqlite:c:/Developpement/escrim.db"); // chemin vers la base de données
+				connection = DriverManager.getConnection("jdbc:sqlite:c:/Developpement/escrim.db"); // chemin vers la base de donnes
 			} catch (Exception e) {
 				System.err.println(e.getClass().getName() + ": " + e.getMessage());
 				System.exit(0);
@@ -41,7 +41,7 @@ public class connection {
 		private void createDatabase() {
 			try {
 				Statement stmt = connection.createStatement();
-				String sql = "CREATE TABLE IF NOT EXISTS TODO ( ID INTEGER PRIMARY KEY AUTOINCREMENT, TEXTE TEXT NOT NULL, ACTIF BOOLEAN NOT NULL)";
+				String sql = "CREATE TABLE IF NOT EXISTS ESCRIM ( ID INTEGER PRIMARY KEY AUTOINCREMENT, TEXTE TEXT NOT NULL, ACTIF BOOLEAN NOT NULL)";
 				stmt.executeUpdate(sql);
 				stmt.close();
 			} catch (Exception e) {
