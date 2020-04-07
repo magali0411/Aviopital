@@ -1,9 +1,14 @@
 package app;
 
-public class medicament extends materiel{
+import java.io.Serializable;
 
-	public medicament() {
-		
+public class medicament extends materiel implements Serializable{
+	
+
+	public medicament() { }
+	
+	public medicament(Etypes type) {
+		super(type);
 	}
 
 }

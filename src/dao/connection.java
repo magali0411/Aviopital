@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -7,7 +8,7 @@ import java.util.logging.Logger;
 
 
 
-public class connection {
+public class connection implements Serializable{
 		
 	private static connection instance = null;
 	private Connection connection = null;
