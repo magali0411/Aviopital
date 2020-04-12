@@ -3,6 +3,7 @@ package dao;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Logger;
 
@@ -13,7 +14,7 @@ public class Factory implements Serializable{
 	private static Factory instance = null;
 	private Connection connection = null;
 	
-	private String url;
+	private static String url;
 
 
 	private static final Logger log = Logger.getLogger("Application");
@@ -42,5 +43,12 @@ public class Factory implements Serializable{
 			}
 			return instance;
 		}
+		
+	    /* Connection à la base de données */
+	    public static Connection getConnection() throws SQLException {
+	    	
+	        return DriverManager.getConnection(url);
+	        
+	    }
 }
 

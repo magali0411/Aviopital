@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class transport {
 	
-	protected String id;
+	private String id;
 	
 	protected String name;
 	protected ArrayList<caisses> listCaisses = new ArrayList<>();
@@ -41,6 +41,14 @@ public abstract class transport {
 
 	public void setDisponibilite(boolean disponibilite) {
 		this.disponibilite = disponibilite;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
