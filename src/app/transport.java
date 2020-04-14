@@ -7,13 +7,13 @@ public abstract class transport {
 	private String id;
 	
 	protected String name;
-	protected ArrayList<caisses> listCaisses = new ArrayList<>();
+	protected ArrayList<Caisse> listCaisses = new ArrayList<>();
 	protected boolean disponibilite;
 
 
 	public transport() { }
 	
-	public transport(String name, ArrayList<caisses> listCaisses ) {
+	public transport(String name, ArrayList<Caisse> listCaisses ) {
 		this.name = name;
 		this.listCaisses = listCaisses;
 	}
@@ -27,11 +27,11 @@ public abstract class transport {
 		this.name = name;
 	}
 	
-	public ArrayList<caisses> getListCaisses() {
+	public ArrayList<Caisse> getListCaisses() {
 		return listCaisses;
 	}
 
-	public void setListCaisses(ArrayList<caisses> listCaisses) {
+	public void setListCaisses(ArrayList<Caisse> listCaisses) {
 		this.listCaisses = listCaisses;
 	}
 

@@ -19,7 +19,7 @@ public class Avion extends transport implements Serializable{
 	
 	public Avion() { }
 	
-	public Avion (String name, ArrayList<caisses> listCaisses) {
+	public Avion (String name, ArrayList<Caisse> listCaisses) {
 		super(name, listCaisses);
 	}
 
