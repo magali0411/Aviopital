@@ -15,6 +15,8 @@ public class Factory implements Serializable{
 	private Connection connection = null;
 	
 	private static String url;
+	private static String username;
+	private static String password;
 
 
 	private static final Logger log = Logger.getLogger("Application");
@@ -22,9 +24,11 @@ public class Factory implements Serializable{
 	private Factory() {
 
 			try {
-				Class.forName("org.sqlite.JDBC");
-				url = "jdbc:sqlite:c:/Developpement/escrim.db";
-				connection = DriverManager.getConnection(url); // chemin vers la base de donnes
+				Class.forName("org.h2.Driver");
+				url = "jdbc:h2:tcp://localhost/~/test"; //
+				username = "sa";
+				password ="";
+				connection = DriverManager.getConnection(url, username, password); // chemin vers la base de donnes
 			} catch (Exception e) {
 				System.err.println(e.getClass().getName() + ": " + e.getMessage());
 				System.exit(0);
@@ -49,6 +53,11 @@ public class Factory implements Serializable{
 	    	
 	        return DriverManager.getConnection(url);
 	        
+	    }
+	    
+	    public static void main(String[] args) {
+	    	Factory test = getInstance();
+	    			
 	    }
 }
 
