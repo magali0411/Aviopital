@@ -10,7 +10,7 @@ public class caisses implements Serializable{
 	
 	private double Poid;
 	private double Volume;
-	private ArrayList<materiel> listMateriel = new ArrayList<materiel>();
+	private ArrayList<Materiel> listMateriel = new ArrayList<Materiel>();
 	
 	private caisses() {};
 	
@@ -27,11 +27,11 @@ public class caisses implements Serializable{
 		Volume = volume;
 	}
 
-	public ArrayList<materiel> getListMateriel() {
+	public ArrayList<Materiel> getListMateriel() {
 		return listMateriel;
 	}
 
-	public void setListMateriel(ArrayList<materiel> listMateriel) {
+	public void setListMateriel(ArrayList<Materiel> listMateriel) {
 		this.listMateriel = listMateriel;
 	}
 

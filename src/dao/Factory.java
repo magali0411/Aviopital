@@ -37,7 +37,6 @@ public class Factory implements Serializable{
 			System.out.println("Opened database successfully");
 			log.info("Opened database successfully");
 
-			//createDatabase();
 			
 		}
 
