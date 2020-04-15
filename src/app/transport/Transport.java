@@ -1,8 +1,10 @@
-package app;
+package app.transport;
 
 import java.util.ArrayList;
 
-public abstract class transport {
+import app.colis.Caisse;
+
+public abstract class Transport {
 	
 	private String id;
 	
@@ -11,9 +13,9 @@ public abstract class transport {
 	protected boolean disponibilite;
 
 
-	public transport() { }
+	public Transport() { }
 	
-	public transport(String name, ArrayList<Caisse> listCaisses ) {
+	public Transport(String name, ArrayList<Caisse> listCaisses ) {
 		this.name = name;
 		this.listCaisses = listCaisses;
 	}

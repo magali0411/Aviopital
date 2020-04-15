@@ -1,9 +1,11 @@
-package app;
+package app.transport;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Avion extends transport implements Serializable{
+import app.colis.Caisse;
+
+public class Avion extends Transport implements Serializable{
 
 	
 	private double maxLoad;

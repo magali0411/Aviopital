@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-import app.Avion;
+import app.transport.Avion;
 
 public class AvionDaoImpl implements AvionDao {
 	

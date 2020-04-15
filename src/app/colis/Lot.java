@@ -1,4 +1,6 @@
-package app;
+package app.colis;
+
+import app.hopital.Materiel;
 
 public class Lot {
 	

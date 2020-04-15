@@ -1,22 +1,16 @@
-package app;
+package app.hopital;
 
 import java.io.Serializable;
 
 
-public abstract class Materiel implements Serializable{
+public abstract class Materiel{
 	
 	private String id;
 	private String name;
-	
-	
-	protected Etypes type;
 	protected String caracteristiques;
 	
 	public Materiel() { };
 	
-	public Materiel(Etypes type) {
-		setType(type);
-	}
 	
 	public String getCaracteristiques() {
 		return caracteristiques;
@@ -26,20 +20,6 @@ public abstract class Materiel implements Serializable{
 		this.caracteristiques = caracteristiques;
 	}
 
-
-	public Etypes getType() {
-		return type;
-	}
-	
-	public String TypeToString() {
-	
-		return type.toString();
-
-	}
-
-	public void setType(Etypes type) {
-		this.type = type;
-	}
 
 	public String getId() {
 		return id;

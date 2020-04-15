@@ -1,6 +1,6 @@
 package dao;
 
-import app.Medicament;
+import app.hopital.Medicament;
 
 public interface MedicamentDao {
 	

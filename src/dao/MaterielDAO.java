@@ -1,6 +1,6 @@
 package dao;
 
-import app.Materiel;
+import app.hopital.Materiel;
 
 public interface MaterielDAO {
 	

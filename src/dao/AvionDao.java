@@ -1,6 +1,6 @@
 package dao;
 
-import app.Avion;
+import app.transport.Avion;
 
 public interface AvionDao {
 		

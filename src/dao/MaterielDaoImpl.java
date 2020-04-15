@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-import app.Materiel;
+import app.hopital.Materiel;
 
 public class MaterielDaoImpl implements MaterielDAO {
 	
