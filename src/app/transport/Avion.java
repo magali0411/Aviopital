@@ -17,6 +17,7 @@ public class Avion extends Transport implements Serializable{
 	private int ferryRange;
 	private int fuelBrun;
 	private String palletPos;
+
 	
 	
 	public Avion() { }
@@ -96,5 +97,6 @@ public class Avion extends Transport implements Serializable{
 	public void setPalletPos(String palletPos) {
 		this.palletPos = palletPos;
 	}
+
 
 }
