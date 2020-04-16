@@ -18,4 +18,10 @@ public class DAHMO extends Materiel implements Structurel{
 		return null;
 	}
 
+	@Override
+	public String getOption() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -6,6 +6,7 @@ public class Lot {
 	
 	private String id;
 	private int quantite;
+	private double volume;
 	private Materiel materiel;
 
 	public Lot() {

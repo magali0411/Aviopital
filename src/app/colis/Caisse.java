@@ -12,12 +12,16 @@ public class Caisse implements Serializable{
 	private double Volume;
 	private String dimension; 
 	
+	private String secteur;
+	private String designation;
+	private String precision;
+	
 	private boolean complet;
 	
 	private ArrayList<Lot> listMateriel = new ArrayList<Lot>();
 	
 	
-	private Caisse() {};
+	public Caisse() {};
 	
 	public double getPoid() {
 		return Poid;
