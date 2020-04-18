@@ -50,13 +50,12 @@ public class Factory implements Serializable{
 	    /* Connection à la base de données */
 	    public static Connection getConnection() throws SQLException {
 	    	
-	        return DriverManager.getConnection(url);
+	        return DriverManager.getConnection(url, username, password);
 	        
 	    }
-	    
-	    public static void main(String[] args) {
-	    	Factory test = getInstance();
-	    			
-	    }
+//	    
+//	    public static void main(String[] args) {
+//	    	Factory test = getInstance();		
+//	    }
 }
 

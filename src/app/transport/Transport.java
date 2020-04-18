@@ -9,6 +9,7 @@ public abstract class Transport {
 	private String id;
 	
 	protected String name;
+	
 	protected ArrayList<Caisse> listCaisses = new ArrayList<>();
 	protected boolean disponibilite;
 

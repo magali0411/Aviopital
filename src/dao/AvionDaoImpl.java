@@ -4,44 +4,62 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import app.transport.Avion;
 
 public class AvionDaoImpl implements AvionDao {
 	
-	private Factory factory;
+	
+	private static AvionDaoImpl instance = null;
+	private Factory f = Factory.getInstance();
+	private Connection connexion;
+	private ArrayList<Avion> allAvionfromDB = new ArrayList<>();
+
 	
 	private static final Logger logger = Logger.getLogger("Escrim");
-	
 
-	public AvionDaoImpl(Factory factory) {
-		this.factory = factory;
+
+
+	public static AvionDaoImpl getInstance() {
+		if (instance == null) {
+			instance = new AvionDaoImpl();
+			instance.addAll();
+		}
+		return instance;
 	}
-
+	
+	
 	@Override
 	public void create(Avion avion) {
 		
 		
-		Connection connexion;
 		PreparedStatement preparedStatement = null;
 
+
         try {
-    	    
-            connexion = Factory.getConnection();
+
+            connexion = f.getConnection();
+
             
             // Requête sql avec les attributs de l'avion
-            String requete = " insert into AVION (NAME,MAXLOAD,DORRSIZE,CARGOHOLD,VOLUME,RUNWAYREQ,LOADRANGE,FERRYRANGE,FUELBRUN,PALLETPOS) values( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
+            String requete = "insert into avions(name, max_load, door_size_w, door_size_h, cargo_hold_l, cargo_hold_w, cargo_hold_h,useable_volume, runway_requirement, load_range, ferry_range, cruise_speed, fuel_burn, pallet_positions) values( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
             preparedStatement.setString(1, avion.getName() );
             preparedStatement.setDouble(2, avion.getMaxLoad());
-            preparedStatement.setString(3,avion.getDorrSize());
-            preparedStatement.setString(4, avion.getCargoHold());
-            preparedStatement.setDouble(5, avion.getVolume());
-            preparedStatement.setDouble(6, avion.getRunwayReq());
-            preparedStatement.setDouble(7, avion.getLoadRange());
-            preparedStatement.setDouble(8, avion.getFerryRange());
-            preparedStatement.setDouble(9, avion.getFuelBrun());
-            preparedStatement.setString(10, avion.getPalletPos());
+            preparedStatement.setInt(3,avion.getDorrSizeW());
+            preparedStatement.setInt(4,avion.getDorrSizeH());
+            preparedStatement.setInt(5, avion.getCargoHoldL());
+            preparedStatement.setInt(6, avion.getCargoHoldW());
+            preparedStatement.setInt(7, avion.getCargoHoldH());
+            preparedStatement.setDouble(8, avion.getVolume());
+            preparedStatement.setDouble(9, avion.getRunwayReq());
+            preparedStatement.setDouble(10, avion.getLoadRange());
+            preparedStatement.setDouble(11, avion.getFerryRange());
+            preparedStatement.setDouble(12, avion.getFuelBrun());
+            preparedStatement.setString(13, avion.getPalletPos());
             
             // Eexecution de la requête
 			preparedStatement = connexion.prepareStatement(requete);
@@ -58,6 +76,8 @@ public class AvionDaoImpl implements AvionDao {
 			 logger.warning( "Error exception" );
 			}
 			
+			logger.info("Avion ajouté à la base de donnée " + avion.getName());
+			
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
@@ -67,9 +87,84 @@ public class AvionDaoImpl implements AvionDao {
 
 	@Override
 	public Avion find(String id) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
+	public void addAll() {
+		
+		
+		try {
+			connexion = f.getConnection();
+			Statement statement = connexion.createStatement();
+
+			if ( statement.execute( "Select id, name, max_load, door_size_w, door_size_h, cargo_hold_l, cargo_hold_w, cargo_hold_h,useable_volume, runway_requirement, load_range, ferry_range, cruise_speed, fuel_burn, pallet_positions FROM AVIONS " ) ){
+				ResultSet resultSet = statement.getResultSet();
+				while ( resultSet.next() ) {
+					
+					
+					String id = resultSet.getString("id");
+					String name = resultSet.getString("name");
+					Float max_load = resultSet.getFloat("max_load");
+					int door_size_w = resultSet.getInt("door_size_w");
+					int door_size_h = resultSet.getInt("door_size_h");
+					int cargo_hold_l = resultSet.getInt("cargo_hold_l");
+					int cargo_hold_w = resultSet.getInt("cargo_hold_w");
+					int cargo_hold_h = resultSet.getInt("cargo_hold_h");
+					int useable_volume = resultSet.getInt("useable_volume");
+					int runway_requirement = resultSet.getInt("runway_requirement");
+					int load_range = resultSet.getInt("load_range");
+					int ferry_range = resultSet.getInt("ferry_range");
+					int cruise_speed = resultSet.getInt("cruise_speed");
+					Float fuel_burn = resultSet.getFloat("fuel_burn");
+					String pallet_positions = resultSet.getString("pallet_positions");
+					
+					
+					
+					Avion avion = new Avion(max_load,
+							door_size_w,door_size_h,
+							cargo_hold_l,cargo_hold_w,cargo_hold_h,
+							useable_volume,
+							runway_requirement,
+							load_range,
+							ferry_range,
+							cruise_speed,
+							fuel_burn,
+							pallet_positions);
+					
+					avion.setName(name);
+					avion.setId(id);
+					
+
+					logger.info("Avion ajouté " + avion.getName());
+					allAvionfromDB.add(avion);
+				}
+			}
+
+			statement.close();
+			
+			
+		} catch (Exception e) {
+			logger.severe( e.getClass().getName() + ": " + e.getMessage() );
+		}
+
+	}
+	
+	public List<Avion> getAll(){
+		
+		this.getInstance();
+		
+		return this.allAvionfromDB;
+		
+	}
+	
+    
+//    public static void main(String[] args) {
+//    	
+//    	 AvionDaoImpl.getInstance().getAll();
+//    	
+//    	
+//    }
+//	
 	
 
 }
