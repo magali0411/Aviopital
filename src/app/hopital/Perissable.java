@@ -4,6 +4,6 @@ import java.sql.Date;
 
 public interface Perissable {
 	
-	Date getDLUO();
+	String getDLU();
 
 }

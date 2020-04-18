@@ -5,51 +5,71 @@ import java.util.ArrayList;
 
 public class Caisse implements Serializable{
 	
+	// indexation
 	private String id;
 	private String name;
-	
-	private double Poid;
+	private int num;
+
+	// characteristics
+	private double Poids;
 	private double Volume;
-	private String dimension; 
-	
+	private int hauteur;
+	private int largeur;
+	private int longueur;
+
+	// material list
+	private ArrayList<Lot> listMateriel = new ArrayList<Lot>();
+
 	private String secteur;
 	private String designation;
 	private String precision;
-	
+
 	private boolean complet;
-	
-	private ArrayList<Lot> listMateriel = new ArrayList<Lot>();
-	
-	
+
 	public Caisse() {};
 	
-	public double getPoid() {
-		return Poid;
+	public void addLot(Lot l) {
+		listMateriel.add(l);
 	}
-	public void setPoid(double poid) {
-		Poid = poid;
+
+	public double getPoids() {
+		return Poids;
 	}
+
+	public void setPoids(double poids) {
+		Poids = poids;
+	}
+
 	public double getVolume() {
 		return Volume;
 	}
+
 	public void setVolume(double volume) {
 		Volume = volume;
 	}
 
-	public ArrayList<Lot> getListMateriel() {
-		return listMateriel;
+	public int getHauteur() {
+		return hauteur;
 	}
 
-	public void setListMateriel(ArrayList<Lot> listMateriel) {
-		this.listMateriel = listMateriel;
+	public void setHauteur(int hauteur) {
+		this.hauteur = hauteur;
 	}
 
-	public String getDimension() {
-		return dimension;
+	public int getLargeur() {
+		return largeur;
 	}
 
-	public void setDimension(String dimension) {
-		this.dimension = dimension;
+	public void setLargeur(int largeur) {
+		this.largeur = largeur;
+	}
+
+	public int getLongueur() {
+		return longueur;
+	}
+
+	public void setLongueur(int longueur) {
+		this.longueur = longueur;
 	}
 
 	public boolean isComplet() {
@@ -60,4 +80,27 @@ public class Caisse implements Serializable{
 		this.complet = complet;
 	}
 
+	public ArrayList<Lot> getListMateriel() {
+		return listMateriel;
+	}
+
+	public void setListMateriel(ArrayList<Lot> listMateriel) {
+		this.listMateriel = listMateriel;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

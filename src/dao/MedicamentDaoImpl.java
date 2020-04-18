@@ -4,10 +4,35 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
+import app.colis.Caisse;
+import app.colis.Lot;
 import app.hopital.Medicament;
+import app.transport.Avion;
 
 public class MedicamentDaoImpl implements MedicamentDao{
+	
+	private static MedicamentDaoImpl instance = null;
+	private Factory f = Factory.getInstance();
+	private Connection connexion;
+	private ArrayList<Caisse> allCaissesMedicamentfromDB = new ArrayList<>();
+
+	
+	private static final Logger logger = Logger.getLogger("Escrim");
+	
+	public static MedicamentDaoImpl getInstance() {
+		if (instance == null) {
+			instance = new MedicamentDaoImpl();
+			instance.addAll();
+		}
+		return instance;
+	}
+
+
 
 	public MedicamentDaoImpl() {
 		// TODO Auto-generated constructor stub
@@ -52,5 +77,79 @@ public class MedicamentDaoImpl implements MedicamentDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+
+	private void addAll() {
+		try {
+			connexion = f.getConnection();
+			Statement statement = connexion.createStatement();
+
+			if ( statement.execute( "Select id,product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7 FROM caisses_medicaments " ) ){
+				ResultSet resultSet = statement.getResultSet();
+				while ( resultSet.next() ) {
+					
+					String id = resultSet.getString("id");
+					String name = resultSet.getString("product_name");
+					String dci = resultSet.getString("dci");
+					String dosage = resultSet.getString("forme_dosage");
+					String DLU = resultSet.getString("DLU");
+					int quantity = resultSet.getInt("quantity");
+					String id_lot = resultSet.getString("id_lot");
+					String classe =  resultSet.getString("classe_therapeutique");
+					int num_caisse = resultSet.getInt("num_caisse");
+					String caisse = resultSet.getString("caisse");
+					String dotation = resultSet.getString("dotation_U7");
+					
+					Medicament m = new Medicament();
+					Lot l = new Lot();
+					Caisse c = new Caisse();
+					
+					m.setId(id);
+					m.setName(name);
+					m.setDCI(dci);
+					m.setForme_dosage(dosage);
+					m.setDLU(DLU);
+					m.setClasse(classe);
+					l.setMateriel(m);
+					l.setQuantite(quantity);
+					l.setId(id_lot);
+					c.addLot(l);
+					c.setNum(num_caisse);
+					c.setName(name);
+					
+					
+					
+					
+					logger.info("Medciament ajouté " + m.getName());
+					logger.info("Lot ajouté " + l.getId());
+					logger.info("Caisse ajoutée " + c.getName());
+					allCaissesMedicamentfromDB.add(c);
+				}
+			}
+
+			statement.close();
+			
+			
+		} catch (Exception e) {
+			logger.severe( e.getClass().getName() + ": " + e.getMessage() );
+		}
+					
+		
+	}
+	
+
+private ArrayList<Caisse> getAll() {
+	return this.allCaissesMedicamentfromDB;
+	
+}
+	
+  public static void main(String[] args) {
+	
+	 MedicamentDaoImpl.getInstance().getAll();
+	
+	
+}
+
+
 
 }
