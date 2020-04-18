@@ -34,6 +34,9 @@ public class Caisse implements Serializable{
 
 	public double getPoids() {
 		return Poids;
+
+	public double getPoids() {
+		return Poids;
 	}
 
 	public void setPoids(double poids) {
@@ -80,13 +83,6 @@ public class Caisse implements Serializable{
 		this.complet = complet;
 	}
 
-	public ArrayList<Lot> getListMateriel() {
-		return listMateriel;
-	}
-
-	public void setListMateriel(ArrayList<Lot> listMateriel) {
-		this.listMateriel = listMateriel;
-	}
 
 	public int getNum() {
 		return num;
@@ -102,5 +98,12 @@ public class Caisse implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	public ArrayList<Lot> getListMateriel() {
+		return listMateriel;
+	}
+
+	public void setListMateriel(ArrayList<Lot> listMateriel) {
+		this.listMateriel = listMateriel;
 	}
 }

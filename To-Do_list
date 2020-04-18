@@ -1,0 +1,16 @@
+TO-DO List:
+
+Dans [colis]:
+- Fonction calcul medicament par rapport a caisse                       [ ]
+
+Dans [colis] & [transport]:
+- Faire fonction adéquation dimension caisse & dimension avion          [ ]
+
+Dans [view]:
+- Relier model/view/controller                                          [x]
+- Initialiser les event handlers                                        [x]
+- Plane view :
+    - Trouver façon de l'accorder à une commande                        [ ]
+- main view :
+    - liste déroulantes avion
+    -
