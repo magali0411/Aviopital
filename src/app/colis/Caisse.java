@@ -5,51 +5,66 @@ import java.util.ArrayList;
 
 public class Caisse implements Serializable{
 	
+	// indexation
 	private String id;
 	private String name;
-	
-	private double Poid;
+
+	// characteristics
+	private double Poids;
 	private double Volume;
-	private String dimension; 
-	
+	private double hauteur;
+	private double largeur;
+	private double longueur;
+
+	// material list
+	private ArrayList<Lot> listMateriel = new ArrayList<Lot>();
+
 	private String secteur;
 	private String designation;
 	private String precision;
-	
+
 	private boolean complet;
-	
-	private ArrayList<Lot> listMateriel = new ArrayList<Lot>();
-	
-	
+
 	public Caisse() {};
-	
-	public double getPoid() {
-		return Poid;
+
+	public double getPoids() {
+		return Poids;
 	}
-	public void setPoid(double poid) {
-		Poid = poid;
+
+	public void setPoids(double poids) {
+		Poids = poids;
 	}
+
 	public double getVolume() {
 		return Volume;
 	}
+
 	public void setVolume(double volume) {
 		Volume = volume;
 	}
 
-	public ArrayList<Lot> getListMateriel() {
-		return listMateriel;
+	public double getHauteur() {
+		return hauteur;
 	}
 
-	public void setListMateriel(ArrayList<Lot> listMateriel) {
-		this.listMateriel = listMateriel;
+	public void setHauteur(double hauteur) {
+		this.hauteur = hauteur;
 	}
 
-	public String getDimension() {
-		return dimension;
+	public double getLargeur() {
+		return largeur;
 	}
 
-	public void setDimension(String dimension) {
-		this.dimension = dimension;
+	public void setLargeur(double largeur) {
+		this.largeur = largeur;
+	}
+
+	public double getLongueur() {
+		return longueur;
+	}
+
+	public void setLongueur(double longueur) {
+		this.longueur = longueur;
 	}
 
 	public boolean isComplet() {
@@ -60,4 +75,11 @@ public class Caisse implements Serializable{
 		this.complet = complet;
 	}
 
+	public ArrayList<Lot> getListMateriel() {
+		return listMateriel;
+	}
+
+	public void setListMateriel(ArrayList<Lot> listMateriel) {
+		this.listMateriel = listMateriel;
+	}
 }
