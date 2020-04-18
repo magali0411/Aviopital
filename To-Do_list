@@ -1,0 +1,12 @@
+TO-DO List:
+
+Dans [colis]:
+- Fonction calcul
+
+Dans [colis] & [transport]:
+- Faire fonction adéquation dimension caisse & dimension avion          [ ]
+
+Dans [view]:
+- Relier model/view/controller                                          [x]
+- Initialiser les event handlers                                        [x]
+-
