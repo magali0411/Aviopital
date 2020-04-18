@@ -9,4 +9,8 @@ Dans [colis] & [transport]:
 Dans [view]:
 - Relier model/view/controller                                          [x]
 - Initialiser les event handlers                                        [x]
--
+- Plane view :
+    - Trouver façon de l'accorder à une commande                        [ ]
+- main view :
+    - liste déroulantes avion
+    -
