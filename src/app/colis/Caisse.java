@@ -32,12 +32,6 @@ public class Caisse implements Serializable{
 		listMateriel.add(l);
 	}
 
-	public double getPoids() {
-		return Poids;
-
-	public double getPoids() {
-		return Poids;
-	}
 
 	public void setPoids(double poids) {
 		Poids = poids;
