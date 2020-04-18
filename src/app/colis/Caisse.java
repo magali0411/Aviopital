@@ -12,9 +12,9 @@ public class Caisse implements Serializable{
 	// characteristics
 	private double Poids;
 	private double Volume;
-	private double hauteur;
-	private double largeur;
-	private double longueur;
+	private int hauteur;
+	private int largeur;
+	private int longueur;
 
 	// material list
 	private ArrayList<Lot> listMateriel = new ArrayList<Lot>();
@@ -43,27 +43,27 @@ public class Caisse implements Serializable{
 		Volume = volume;
 	}
 
-	public double getHauteur() {
+	public int getHauteur() {
 		return hauteur;
 	}
 
-	public void setHauteur(double hauteur) {
+	public void setHauteur(int hauteur) {
 		this.hauteur = hauteur;
 	}
 
-	public double getLargeur() {
+	public int getLargeur() {
 		return largeur;
 	}
 
-	public void setLargeur(double largeur) {
+	public void setLargeur(int largeur) {
 		this.largeur = largeur;
 	}
 
-	public double getLongueur() {
+	public int getLongueur() {
 		return longueur;
 	}
 
-	public void setLongueur(double longueur) {
+	public void setLongueur(int longueur) {
 		this.longueur = longueur;
 	}
 
