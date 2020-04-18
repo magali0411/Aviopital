@@ -4,7 +4,7 @@ Dans [colis]:
 - Fonction calcul medicament par rapport a caisse                       [ ]
 
 Dans [colis] & [transport]:
-- Faire fonction adéquation dimension caisse & dimension avion          [ ]
+- Faire fonction adéquation dimension caisse & dimension avion          [x]
 
 Dans [view]:
 - Relier model/view/controller                                          [x]
@@ -13,5 +13,4 @@ Dans [view]:
     - Trouver façon de l'accorder à une commande                        [ ]
 - main view :
     - liste déroulantes avion 
---> Pour récupérer la liste tu peux utiliser AvionDaoImpl.getInstance().getAll();
     -
