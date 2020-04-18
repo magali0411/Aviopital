@@ -12,5 +12,6 @@ Dans [view]:
 - Plane view :
     - Trouver façon de l'accorder à une commande                        [ ]
 - main view :
-    - liste déroulantes avion
+    - liste déroulantes avion 
+--> Pour récupérer la liste tu peux utiliser AvionDaoImpl.getInstance().getAll();
     -
