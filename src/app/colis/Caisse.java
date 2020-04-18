@@ -8,6 +8,7 @@ public class Caisse implements Serializable{
 	// indexation
 	private String id;
 	private String name;
+	private int num;
 
 	// characteristics
 	private double Poids;
@@ -26,10 +27,11 @@ public class Caisse implements Serializable{
 	private boolean complet;
 
 	public Caisse() {};
-
-	public double getPoids() {
-		return Poids;
+	
+	public void addLot(Lot l) {
+		listMateriel.add(l);
 	}
+
 
 	public void setPoids(double poids) {
 		Poids = poids;
@@ -75,6 +77,22 @@ public class Caisse implements Serializable{
 		this.complet = complet;
 	}
 
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	public ArrayList<Lot> getListMateriel() {
 		return listMateriel;
 	}
