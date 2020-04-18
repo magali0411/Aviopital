@@ -1,5 +1,8 @@
 package view;
 
+import app.transport.Avion;
+import javafx.beans.Observable;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -7,6 +10,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -39,8 +43,10 @@ public class View implements IView {
         VBox tool_box = new VBox();
         tool_box.setStyle("-fx-background-color: #262626");
         tool_box.setAlignment(Pos.BASELINE_CENTER);
-        tool_box.setSpacing(30);
+        tool_box.setSpacing(20);
         tool_box.setPadding(new Insets(0, 20, 0, 20));
+        tool_box.setPrefHeight(FirstScene.getHeight());
+        tool_box.setPrefWidth(FirstScene.getWidth()*(1./4));
 
         // Tools label
         Label tools_label = new Label("Tools");
@@ -95,6 +101,7 @@ public class View implements IView {
 
         // ------------------------- MAIN ------------------------
 
+        // --------
         GridPane main_grid = new GridPane();
 
 
@@ -124,7 +131,7 @@ public class View implements IView {
         type_label.setFont(font_label);
 
         // plane_name
-        Label plane_name = new Label("Antonov An 12");
+        Label plane_name = new Label("plane_name");
         Font bold_font_label = Font.font("Arial", 16);
         plane_name.setTextFill(Color.WHITE);
         plane_name.setFont(bold_font_label);
@@ -201,6 +208,10 @@ public class View implements IView {
                 "-fx-background-radius: 90;");
 
         confirm_btn.addEventHandler(Event.ANY, view_controller);
+
+        // Plane name list view
+        ListView<String> avionListView = new ListView<String>();
+
 
         /*
          * Adding plane_label, gridPane, metric_box and confirm_btn to Vbox

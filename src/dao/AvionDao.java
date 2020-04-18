@@ -15,4 +15,6 @@ public interface AvionDao {
 	
 	public List<Avion> getAll();
 
+	public ArrayList<String> getAvionNames();
+
 }
