@@ -2,6 +2,7 @@ package app.transport;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import app.colis.Caisse;
 
@@ -21,6 +22,8 @@ public class Avion extends Transport implements Serializable{
 	private float fuelBrun;
 	private int cruiseSpeed;
 	private String palletPos;
+	
+	private static final Logger logger = Logger.getLogger("Escrim");
 
 	
 	
@@ -56,6 +59,29 @@ public class Avion extends Transport implements Serializable{
 	public Avion (String name, ArrayList<Caisse> listCaisses) {
 		super(name, listCaisses);
 	}
+
+	
+	public boolean fit ( Caisse caisse ) {
+		
+		int volTotal = 0 ;
+		
+		for(Caisse c : super.listCaisses) {
+			volTotal += c.getVolume();
+		}
+		
+		if (volTotal + caisse.getVolume() > this.volume ||
+				caisse.getHauteur() > this.getCargoHoldH() ||
+				caisse.getHauteur() > this.getDorrSizeH() ||
+				caisse.getLargeur() > this.getCargoHoldW() ||
+				caisse.getLargeur() > this.getDorrSizeW() ||
+				caisse.getLongueur() > this.getCargoHoldL()) {
+			return false;
+		}
+		
+		return true;
+		
+	}
+	
 
 	public float getMaxLoad() {
 		return maxLoad;
@@ -160,6 +186,13 @@ public class Avion extends Transport implements Serializable{
 
 	public void setCargoHoldL(int cargoHoldL) {
 		this.cargoHoldL = cargoHoldL;
+	}
+
+
+	@Override
+	public boolean Fit(Caisse caisse) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 
