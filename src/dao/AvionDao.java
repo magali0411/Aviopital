@@ -14,5 +14,9 @@ public interface AvionDao {
 	void addAll();
 	
 	public List<Avion> getAll();
+	
+	public List<String> getAllPlaneName();
+	
+	public Avion getPlaneByName(String name);
 
 }

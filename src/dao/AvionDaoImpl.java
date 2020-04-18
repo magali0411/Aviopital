@@ -90,6 +90,7 @@ public class AvionDaoImpl implements AvionDao {
 
 		return null;
 	}
+	
 	public void addAll() {
 		
 		
@@ -155,6 +156,103 @@ public class AvionDaoImpl implements AvionDao {
 		
 		return this.allAvionfromDB;
 		
+	}
+
+
+	@Override
+	public List<String> getAllPlaneName() {
+		
+		ArrayList<String> listPlaneName = new ArrayList<>();
+		
+		try {
+			connexion = f.getConnection();
+			Statement statement = connexion.createStatement();
+
+			if ( statement.execute( "Select NAME  from AVIONS") ) {
+				ResultSet resultSet = statement.getResultSet();
+				while ( resultSet.next() ) {
+
+					String name = resultSet.getString("name");
+					listPlaneName.add(name);
+				}
+				
+			}
+
+		statement.close();
+		
+		
+		} catch (Exception e) {
+			logger.severe( e.getClass().getName() + ": " + e.getMessage() );
+		}
+		
+		return listPlaneName;
+
+	}
+
+
+	@Override
+	public Avion getPlaneByName(String name) {
+		Avion avion = new Avion();
+		
+
+		
+		String query = "Select id, max_load, door_size_w, door_size_h, cargo_hold_l, cargo_hold_w, cargo_hold_h,useable_volume, runway_requirement, load_range, ferry_range, cruise_speed, fuel_burn, pallet_positions "
+				+ "FROM AVIONS "
+				+ "WHERE name = ?";
+		
+		PreparedStatement preparedStatment;
+		
+		try {
+			
+			connexion = f.getConnection();
+			preparedStatment = connexion.prepareStatement(query );	
+			preparedStatment.setString(1, name );
+			preparedStatment.execute();
+			ResultSet result = preparedStatment.getResultSet();
+			
+			String id = result.getString("id");
+			Float max_load = result.getFloat("max_load");
+			int door_size_w = result.getInt("door_size_w");
+			int door_size_h = result.getInt("door_size_h");
+			int cargo_hold_l = result.getInt("cargo_hold_l");
+			int cargo_hold_w = result.getInt("cargo_hold_w");
+			int cargo_hold_h = result.getInt("cargo_hold_h");
+			int useable_volume = result.getInt("useable_volume");
+			int runway_requirement = result.getInt("runway_requirement");
+			int load_range = result.getInt("load_range");
+			int ferry_range = result.getInt("ferry_range");
+			int cruise_speed = result.getInt("cruise_speed");
+			Float fuel_burn = result.getFloat("fuel_burn");
+			String pallet_positions = result.getString("pallet_positions");
+			
+			
+
+			avion.setName(name);
+			avion.setId(id);
+			avion.setMaxLoad(max_load);
+			avion.setCargoHoldH(cargo_hold_h);
+			avion.setCargoHoldL(cargo_hold_l);
+			avion.setCargoHoldW(cargo_hold_w);
+			avion.setDorrSizeH(door_size_h);
+			avion.setDorrSizeW(door_size_w);
+			avion.setVolume(useable_volume);
+			avion.setRunwayReq(runway_requirement);
+			avion.setLoadRange(load_range);
+			avion.setFerryRange(ferry_range);
+			avion.setCruiseSpeed(cruise_speed);
+			avion.setFuelBrun(fuel_burn);	
+			avion.setPalletPos(pallet_positions);	
+			
+			logger.info("Avion ajouté " + avion.getName());
+			
+			preparedStatment.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return avion;
 	}
 	
     
