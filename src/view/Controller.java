@@ -12,11 +12,14 @@ public class Controller implements EventHandler {
     public void handle(Event event) {
         // confirm button
         if (((Button) event.getSource()).getText() == "Confirm") {
-            if (event.getEventType() == MouseEvent.MOUSE_ENTERED)
+            if (event.getEventType() == MouseEvent.MOUSE_ENTERED) {
                 ((Button) event.getSource()).setStyle("-fx-background-color: #00DA63; " +
                         "-fx-font: bold 2.1em \"Arial\";" +
                         "-fx-text-fill: #ffffff;" +
                         "-fx-background-radius: 90;");
+
+                Model model_test = new Model();
+            };
             if (event.getEventType() == MouseEvent.MOUSE_EXITED)
                 ((Button) event.getSource()).setStyle("-fx-background-color: #00DA63; " +
                         "-fx-font: bold 2em \"Arial\";" +
