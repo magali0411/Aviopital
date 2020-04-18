@@ -19,4 +19,6 @@ public interface AvionDao {
 	
 	public Avion getPlaneByName(String name);
 
+	public ArrayList<String> getAvionNames();
+
 }
