@@ -93,6 +93,17 @@ public class View2 implements IView {
     }
 
 
+    public static BorderPane addMainBorderPane() {
+        BorderPane centerPane = new BorderPane();
+
+        return centerPane;
+    }
+
+    public static GridPane addSetEscrim(){
+        GridPane escrim = new GridPane();
+
+        return  escrim;
+    }
 
     public static Scene createFirstScene(Group root, Controller view_controller) {
 
