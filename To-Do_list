@@ -1,5 +1,12 @@
 TO-DO List:
 
+Dans[Partout] 
+- Ajouter des loggers                                                   [ ]
+- Ajouter des commentaires javadoc                                      [ ]
+
+Dans[DAO]
+-Implémenter les autres méthodes de bases(interface - classe)           [ ]
+
 Dans [colis]:
 - Fonction calcul medicament par rapport a caisse                       [ ]
 
