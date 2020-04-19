@@ -31,7 +31,7 @@ public class View implements IView {
     public static Scene createFirstScene(Group root, Controller view_controller) {
 
         // ------------------------- SCENE ------------------------
-        Scene FirstScene = new Scene(root, 800, 500, Color.BLACK);
+        Scene FirstScene = new Scene(root, 800, 500, Color.WHITE);
         HBox scene_hbox = new HBox();
 
         ((Group) FirstScene.getRoot()).getChildren().add(scene_hbox);
@@ -123,6 +123,7 @@ public class View implements IView {
          *                 2.1 Qty_label  ; 2.2 nb_of_plane
          */
         GridPane gridPane = new GridPane();
+        gridPane.setGridLinesVisible(true);
 
         // type label
         Label type_label = new Label("Type : ");

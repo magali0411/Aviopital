@@ -41,10 +41,10 @@ public class Avion extends Transport implements Serializable{
 			float fuelBrun, 
 			String palletPos) {
 		super();
-		this.maxLoad = maxLoad;
-		this.dorrSizeH = dorrSizeH;
+		this.maxLoad = maxLoad; // poids maximal
+		this.dorrSizeH = dorrSizeH; // door size
 		this.dorrSizeW = dorrSizeW;
-		this.cargoHoldL = cargoHoldL;
+		this.cargoHoldL = cargoHoldL; // cargo hold = soute
 		this.cargoHoldW = cargoHoldW;
 		this.cargoHoldH = cargoHoldH;
 		this.volume = volume;
@@ -90,7 +90,6 @@ public class Avion extends Transport implements Serializable{
 	public void setMaxLoad(float maxLoad) {
 		this.maxLoad = maxLoad;
 	}
-
 
 	public int getVolume() {
 		return volume;
