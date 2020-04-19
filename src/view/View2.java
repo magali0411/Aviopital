@@ -2,23 +2,31 @@ package view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import javax.swing.*;
+
 public class View2 implements IView {
 
-    private Controller view_controller = new Controller();
+    private static Controller2 view_controller = new Controller2();
 
     public View2() {
+    }
+
+    // -------------------------- CART (= PAGNIER COMMANDE) --------------------------
+
+    public static VBox addCart() {
+        VBox cart = new VBox();
+        return cart;
     }
 
     // -------------------------- TOOLS BAR -------------------------
@@ -117,23 +125,73 @@ public class View2 implements IView {
 
         // Hospital element
         Button hospitalButton = new Button("Hospital");
+        hospitalButton.addEventHandler(ActionEvent.ANY, view_controller);
 
         // Colis element
-        Button colisButton = new Button("Colis");
+        Button structureButton = new Button("Colis Structure");
+        structureButton.addEventHandler(ActionEvent.ANY, view_controller);
 
-        elements.getChildren().addAll(hospitalButton, colisButton);
+        // Colis element
+        Button medicamentButton = new Button("Colis Medicament");
+        medicamentButton.addEventHandler(ActionEvent.ANY, view_controller);
+
+
+        elements.getChildren().addAll(hospitalButton, structureButton, medicamentButton);
 
         return elements;
     }
 
     // The two following pane describe the hospital Pane and the other one the colis pane
     public static GridPane addHospitalPane() {
+
         GridPane hospitalPane = new GridPane();
+        hospitalPane.setVgap(10);
+        hospitalPane.setHgap(10);
+        hospitalPane.setGridLinesVisible(true);
+
+
+        Label base = new Label("Ajout d'une base");
+
+        /* Si il y a plusieurs fois l'option pays froid pays chaud, c'est pour garder en flexibilite
+         * Car ces options n'ajoute ou n'enleve que des parties
+         */
+        // ------------ DAHMO ---------------
+
+        Label DAHMO = new Label("DAHMO");
+
+        CheckBox HotColdcountry = new CheckBox("Pays chaud/froid");
+
+
+        Label quantityLabel = new Label("Qty : ");
+
+        TextField quantity = new TextField();
+
+
+        CheckBox DAHMOComplet = new CheckBox("DAHMO Complet");
+
+        // ---------- DAC ------------------
+
+        Label DAC = new Label("DAC");
+
+        CheckBox hotCountry = new CheckBox("Pays chaud");
+
+        CheckBox coldCountry = new CheckBox("Pays froid");
+
+        // ---------- Base Vie ------------
+
+
+
+
+
+
+
+
+
 
         return hospitalPane;
     }
 
-    public static GridPane addColisPane() {
+    public static GridPane addStructurePane() {
 
         GridPane colisPane = new GridPane();
         colisPane.setGridLinesVisible(true);
@@ -191,6 +249,11 @@ public class View2 implements IView {
         return colisPane;
     }
 
+    public static GridPane addMedicamentPane() {
+        GridPane medicamentPane = new GridPane();
+        return medicamentPane;
+    }
+
     public static BorderPane addAddElementPane() {
         BorderPane mainPane = new BorderPane();
 
@@ -198,7 +261,7 @@ public class View2 implements IView {
         mainPane.setTop(addAddElementBar());
 
         // Add by default the hospital pane, will be changed after
-        mainPane.setCenter(addColisPane());
+        mainPane.setCenter(addHospitalPane());
 
         return mainPane;
     }
@@ -206,7 +269,7 @@ public class View2 implements IView {
 
     // --------------------------- SCENE --------------------------------------
 
-    public static Scene createFirstScene(Group root, Controller view_controller) {
+    public static Scene createFirstScene(Group root, Controller2 view_controller) {
 
         // ------------------------- SCENE ------------------------
         //Scene FirstScene = new Scene(root, 800, 500, Color.WHITE);
