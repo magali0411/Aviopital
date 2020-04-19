@@ -47,7 +47,12 @@ public class Factory implements Serializable{
 			return instance;
 		}
 		
-	    /* Connection à la base de données */
+	   /**
+	    * 
+	    * Méthode pour obtenir une connection à la base de données
+	    * @return
+	    * @throws SQLException
+	    */
 	    public static Connection getConnection() throws SQLException {
 	    	
 	        return DriverManager.getConnection(url, username, password);
