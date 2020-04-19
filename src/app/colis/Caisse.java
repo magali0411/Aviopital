@@ -3,7 +3,7 @@ package app.colis;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Caisse implements Serializable{
+public abstract class Caisse implements Serializable{
 	
 	// indexation
 	private String id;
@@ -20,13 +20,33 @@ public class Caisse implements Serializable{
 	// material list
 	private ArrayList<Lot> listMateriel = new ArrayList<Lot>();
 
-	private String secteur;
-	private String designation;
-	private String precision;
-
-	private boolean complet;
 
 	public Caisse() {};
+	
+	/**
+	 * Constructeur d'une caisse standart
+	 * @param name
+	 * @param num
+	 * @param poids
+	 * @param volume
+	 * @param hauteur
+	 * @param largeur
+	 * @param longueur
+	 */
+	public Caisse(String name, int num, double poids, double volume, int hauteur, int largeur, int longueur) {
+		setName(name);
+		setNum(num);
+		setPoids(poids);
+		setVolume(volume);
+		setHauteur(hauteur);
+		setLargeur(largeur);
+		setLongueur(longueur);
+	}
+
+	/**
+	 * Méthode pour ajouter un nouveau lot de matériel
+	 * @param l
+	 */
 	
 	public void addLot(Lot l) {
 		listMateriel.add(l);
@@ -69,14 +89,6 @@ public class Caisse implements Serializable{
 		this.longueur = longueur;
 	}
 
-	public boolean isComplet() {
-		return complet;
-	}
-
-	public void setComplet(boolean complet) {
-		this.complet = complet;
-	}
-
 
 	public int getNum() {
 		return num;
@@ -100,4 +112,5 @@ public class Caisse implements Serializable{
 	public void setListMateriel(ArrayList<Lot> listMateriel) {
 		this.listMateriel = listMateriel;
 	}
+
 }

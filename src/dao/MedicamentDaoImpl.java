@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import app.colis.Caisse;
+import app.colis.ColisMedicament;
 import app.colis.Lot;
 import app.hopital.Medicament;
 import app.transport.Avion;
@@ -17,9 +18,9 @@ import app.transport.Avion;
 public class MedicamentDaoImpl implements MedicamentDao{
 	
 	private static MedicamentDaoImpl instance = null;
-	private Factory f = Factory.getInstance();
+	private Factory f;
 	private Connection connexion;
-	private ArrayList<Caisse> allCaissesMedicamentfromDB = new ArrayList<>();
+	public ArrayList<Caisse> allCaissesMedicamentfromDB = new ArrayList<>();
 
 	
 	private static final Logger logger = Logger.getLogger("Escrim");
@@ -33,11 +34,6 @@ public class MedicamentDaoImpl implements MedicamentDao{
 	}
 
 
-
-	public MedicamentDaoImpl() {
-		// TODO Auto-generated constructor stub
-	}
-	
 
 	@Override
 	public void create(Medicament medicament) {
@@ -102,7 +98,7 @@ public class MedicamentDaoImpl implements MedicamentDao{
 					
 					Medicament m = new Medicament();
 					Lot l = new Lot();
-					Caisse c = new Caisse();
+					ColisMedicament c = new ColisMedicament();
 					
 					m.setId(id);
 					m.setName(name);
@@ -116,9 +112,7 @@ public class MedicamentDaoImpl implements MedicamentDao{
 					c.addLot(l);
 					c.setNum(num_caisse);
 					c.setName(name);
-					
-					
-					
+									
 					
 					logger.info("Medciament ajouté " + m.getName());
 					logger.info("Lot ajouté " + l.getId());

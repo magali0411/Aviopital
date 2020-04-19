@@ -17,7 +17,7 @@ public class AvionDaoImpl implements AvionDao {
 	private static AvionDaoImpl instance = null;
 	private Factory f = Factory.getInstance();
 	private Connection connexion;
-	private ArrayList<Avion> allAvionfromDB = new ArrayList<>();
+	public ArrayList<Avion> allAvionfromDB = new ArrayList<>();
 
 	
 	private static final Logger logger = Logger.getLogger("Escrim");
