@@ -17,6 +17,7 @@ public class Lot {
 		setMateriel(m);
 		setQuantite(i);
 		setVolume(volume);
+		
 	}
 
 	public int getQuantite() {
