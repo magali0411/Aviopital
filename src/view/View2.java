@@ -78,6 +78,7 @@ public class View2 implements IView {
         TextField quantity = new TextField("1");
         quantity.setPrefWidth(3);
         planeGrid.add(quantity, 1, 1, 1, 1);
+        quantity.addEventHandler(ActionEvent.ANY, view_controller);
 
 
         // Quantity Label

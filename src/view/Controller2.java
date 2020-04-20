@@ -16,10 +16,8 @@ public class Controller2 implements EventHandler {
     @Override
     public void handle(Event event) {
         System.out.println(event.getEventType());
-        Button sourceButton;
-        CheckBox checkBox;
-        if (event.getEventType() == ActionEvent.ACTION) {
-            sourceButton = (Button) event.getSource();
+        if (event.getSource() instanceof Button) {
+            Button sourceButton = (Button) event.getSource();
             switch (sourceButton.getText()) {
                 case "Hospital":
                     ((BorderPane) sourceButton.getParent().getParent()).setCenter(addHospitalPane(addHospitalGrid()));
@@ -32,6 +30,14 @@ public class Controller2 implements EventHandler {
                     break;
             }
         }
+        if (event.getSource() instanceof CheckBox){
+            CheckBox checkBox = (CheckBox) event.getSource();
+            switch (checkBox.getText()) {
+                case "":
+                    break;
+            }
+        }
+
     }
 }
 
