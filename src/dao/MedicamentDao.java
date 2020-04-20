@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.ArrayList;
+
+import app.colis.Caisse;
 import app.hopital.Medicament;
 
 public interface MedicamentDao {
@@ -16,5 +19,12 @@ public interface MedicamentDao {
 	 * @return
 	 */
 	Medicament find( String id );
+	
+	/**
+	 * Méthode pour récupérer toutes les caisses de médicament du même nom 
+	 * @param name
+	 * @return
+	 */
+	public ArrayList<Caisse> getCaisseMedicamentByName(String name);
 
 }

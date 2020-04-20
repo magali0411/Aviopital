@@ -19,6 +19,9 @@ public abstract class Caisse implements Serializable{
 
 	// material list
 	private ArrayList<Lot> listMateriel = new ArrayList<Lot>();
+	
+	//dispo
+	private boolean disponible;
 
 
 	public Caisse() {};
@@ -111,6 +114,14 @@ public abstract class Caisse implements Serializable{
 
 	public void setListMateriel(ArrayList<Lot> listMateriel) {
 		this.listMateriel = listMateriel;
+	}
+
+	public boolean isDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
 	}
 
 }

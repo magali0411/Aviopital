@@ -255,13 +255,6 @@ public class AvionDaoImpl implements AvionDao {
 		return avion;
 	}
 
-
-	@Override
-	public ArrayList<String> getAvionNames() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
     
 //    public static void main(String[] args) {
 //    	

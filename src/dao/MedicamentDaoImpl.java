@@ -132,10 +132,25 @@ public class MedicamentDaoImpl implements MedicamentDao{
 	}
 	
 
-private ArrayList<Caisse> getAll() {
-	return this.allCaissesMedicamentfromDB;
+	public ArrayList<Caisse> getAll() {
+		return this.allCaissesMedicamentfromDB;
 	
-}
+	}
+	
+	public ArrayList<Caisse> getCaisseMedicamentByName(String name) {
+		
+		ArrayList<Caisse> listCaisse = new ArrayList<>();
+		
+		for ( Caisse c : this.getAll()) {
+			if (c.getName() == name ) {
+				listCaisse.add(c);
+			}
+		}
+		
+		return listCaisse;	
+		
+	}
+
 	
   public static void main(String[] args) {
 	

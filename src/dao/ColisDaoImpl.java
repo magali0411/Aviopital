@@ -1,7 +1,9 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -11,7 +13,6 @@ import app.colis.ColisStructure;
 import app.colis.Lot;
 import app.hopital.Materiel;
 import app.hopital.Structure;
-import app.transport.Avion;
 
 public class ColisDaoImpl implements ColisDao{
 	
@@ -78,6 +79,26 @@ public class ColisDaoImpl implements ColisDao{
 			logger.severe( e.getClass().getName() + ": " + e.getMessage() );
 		}
 
+	}
+	
+	public ArrayList<Caisse> getAll() {
+		return this.allCaissesStructureFromDB;
+		
+	}
+	
+	public ArrayList<Caisse> getCaisseByName(String name) {
+		
+		ArrayList<Caisse> listCaisses = new ArrayList<>();
+		
+		for( Caisse c : this.getAll()) {
+			
+			if (c.getName() == name) {
+				listCaisses.add(c);
+			}
+			
+		}
+			
+		return listCaisses;
 	}
 	
   public static void main(String[] args) {
