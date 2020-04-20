@@ -12,6 +12,12 @@ public abstract class Materiel{
 	public Materiel() { };
 	
 	
+	public Materiel(String id, String name) {
+		setId(id);
+		setName(name);
+	}
+
+
 	public String getCaracteristiques() {
 		return caracteristiques;
 	}

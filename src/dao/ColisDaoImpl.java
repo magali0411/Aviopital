@@ -8,6 +8,9 @@ import java.util.logging.Logger;
 
 import app.colis.Caisse;
 import app.colis.ColisStructure;
+import app.colis.Lot;
+import app.hopital.Materiel;
+import app.hopital.Structure;
 import app.transport.Avion;
 
 public class ColisDaoImpl implements ColisDao{
@@ -57,8 +60,13 @@ public class ColisDaoImpl implements ColisDao{
 					Caisse caisse = new ColisStructure(affectaire, num_colis,poids, volume, 120,80,100, secteur,
 							designations_colis, precision_articles);
 					
+					Materiel m = new Structure(id,nature_colis,module,secteur,nominal_optionnel);
+					m.setCaracteristiques(observations);
+					Lot l = new Lot(m,1,volume);
+					
 
-					logger.info("Caisse ajoutée " + caisse.getName());
+					logger.info("Caisse structure ajouté " + caisse.getName());
+					logger.info("Matériel structure ajouté " + m.getName());
 					allCaissesStructureFromDB.add(caisse);
 				}
 			}

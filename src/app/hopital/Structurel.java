@@ -6,6 +6,6 @@ public interface Structurel {
 	
 	String getSecteur();
 	
-	String getOption();
+	Boolean getOption();
 
 }

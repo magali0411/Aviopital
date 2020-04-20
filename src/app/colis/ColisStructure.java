@@ -64,5 +64,4 @@ public class ColisStructure extends Caisse {
 	public void setComplet(boolean complet) {
 		this.complet = complet;
 	}
-
 }

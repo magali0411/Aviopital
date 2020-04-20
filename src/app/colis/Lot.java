@@ -13,6 +13,12 @@ public class Lot {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Lot(Materiel m, int i, float volume) {
+		setMateriel(m);
+		setQuantite(i);
+		setVolume(volume);
+	}
+
 	public int getQuantite() {
 		return quantite;
 	}
@@ -35,6 +41,14 @@ public class Lot {
 
 	public void setMateriel(Materiel materiel) {
 		this.materiel = materiel;
+	}
+
+	public double getVolume() {
+		return volume;
+	}
+
+	public void setVolume(double volume) {
+		this.volume = volume;
 	}
 
 }
