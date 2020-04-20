@@ -59,7 +59,7 @@ public class View2 implements IView {
 
         // Set the grid that contains all the plane information
         GridPane planeGrid = new GridPane();
-        planeGrid.setGridLinesVisible(true);
+        planeGrid.setGridLinesVisible(false);
         planeGrid.setHgap(10);
         planeGrid.setVgap(10);
         planeGrid.setPadding(new Insets(5, 0, 5, 10));
@@ -160,7 +160,7 @@ public class View2 implements IView {
         GridPane hospitalGrid = new GridPane();
         hospitalGrid.setVgap(10);
         hospitalGrid.setHgap(10);
-        hospitalGrid.setGridLinesVisible(true);
+        hospitalGrid.setGridLinesVisible(false);
 
 
         Label base = new Label("            Ajout d'une base ");
@@ -235,7 +235,7 @@ public class View2 implements IView {
     public static GridPane addStructurePane() {
 
         GridPane colisPane = new GridPane();
-        colisPane.setGridLinesVisible(true);
+        colisPane.setGridLinesVisible(false);
         colisPane.setVgap(10);
         colisPane.setHgap(10);
 
