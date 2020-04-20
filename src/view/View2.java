@@ -7,13 +7,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.*;
 
-import javax.swing.*;
 
 public class View2 implements IView {
 
@@ -48,7 +43,10 @@ public class View2 implements IView {
         // Import Excel
         Button importExcelButton = new Button("Import Excel");
 
-        toolsBox.getChildren().addAll(tools, orderButton, exportExcelButton, importExcelButton);
+        // Export as PDF
+        Button pdfExport = new Button("Export as PDF");
+
+        toolsBox.getChildren().addAll(tools, orderButton, exportExcelButton, importExcelButton, pdfExport);
 
         return toolsBox;
     }
@@ -76,48 +74,60 @@ public class View2 implements IView {
         //Label planeLabel = new Label("Antonov An 12");
         planeGrid.add(planeSelection, 0, 0, 3, 1);
 
+        // quantity field
+        TextField quantity = new TextField("1");
+        quantity.setPrefWidth(3);
+        planeGrid.add(quantity, 1, 1, 1, 1);
+
+
+        // Quantity Label
+        Label quantityLabel = new Label("Quantity");
+        planeGrid.add(quantityLabel, 0, 1,1,1);
+
         // Door dimension column 1-2, rows 3
         Label doorDimension = new Label("Door dimensions (cm)");
-        planeGrid.add(doorDimension, 0, 1, 3, 1);
+        planeGrid.add(doorDimension, 0, 2, 3, 1);
 
         Label doorWidth = new Label("W: 245");
-        planeGrid.add(doorWidth, 0, 2);
+        planeGrid.add(doorWidth, 0, 3);
 
         Label doorHeight = new Label("H: 295");
-        planeGrid.add(doorHeight, 1, 2);
+        planeGrid.add(doorHeight, 1, 3);
 
         // Cargo Hold dimension
         Label cargoHoldDimension = new Label("Cargo Hold Dimensions (cm)");
-        planeGrid.add(cargoHoldDimension, 0, 3, 3, 1);
+        planeGrid.add(cargoHoldDimension, 0, 4, 3, 1);
 
         Label cargoHoldLength = new Label("L: 1350");
-        planeGrid.add(cargoHoldLength, 0, 4);
+        planeGrid.add(cargoHoldLength, 0, 5);
 
         Label cargoHoldWidth = new Label("W: 245");
-        planeGrid.add(cargoHoldWidth, 1, 4);
+        planeGrid.add(cargoHoldWidth, 1, 5);
 
         Label cargoHoldHeight = new Label("H: 245");
-        planeGrid.add(cargoHoldHeight, 2, 4);
+        planeGrid.add(cargoHoldHeight, 2, 5);
 
         // Usable volume
         Label volumeTitle = new Label("Volume");
-        planeGrid.add(volumeTitle, 0, 5, 3, 1);
+        planeGrid.add(volumeTitle, 0, 6, 3, 1);
 
         Label volume = new Label(" / 90" + " m3");
-        planeGrid.add(volume, 0, 6);
+        planeGrid.add(volume, 0, 7);
 
         // Weight used
         Label maxLoadTitle = new Label("Max Load");
-        planeGrid.add(maxLoadTitle, 0, 7, 3, 1);
+        planeGrid.add(maxLoadTitle, 0, 8, 3, 1);
 
         Label maxLoad = new Label(" / 18" + " t");
-        planeGrid.add(maxLoad, 0, 8);
+        planeGrid.add(maxLoad, 0, 9);
 
 
         return planeGrid;
     }
 
     // -------------------------- ELEMENTS PICKING -------------------------
+
+    // Element Bar ---------
 
     // AddElement bar has 2 button one to set the hospital, the other to set the colis
     public static HBox addAddElementBar() {
@@ -141,55 +151,85 @@ public class View2 implements IView {
         return elements;
     }
 
+    // Hospital Pane ---------
+
     // The two following pane describe the hospital Pane and the other one the colis pane
-    public static GridPane addHospitalPane() {
+    public static GridPane addHospitalGrid() {
 
-        GridPane hospitalPane = new GridPane();
-        hospitalPane.setVgap(10);
-        hospitalPane.setHgap(10);
-        hospitalPane.setGridLinesVisible(true);
+        GridPane hospitalGrid = new GridPane();
+        hospitalGrid.setVgap(10);
+        hospitalGrid.setHgap(10);
+        hospitalGrid.setGridLinesVisible(true);
 
 
-        Label base = new Label("Ajout d'une base");
-
+        Label base = new Label("            Ajout d'une base ");
+        hospitalGrid.add(base, 0, 0);
         /* Si il y a plusieurs fois l'option pays froid pays chaud, c'est pour garder en flexibilite
          * Car ces options n'ajoute ou n'enleve que des parties
          */
         // ------------ DAHMO ---------------
 
-        Label DAHMO = new Label("DAHMO");
+        Label DAHMO = new Label("-------------- DAHMO ----------------");
+        hospitalGrid.add(DAHMO, 0, 1, 2, 1);
+        CheckBox DAHMOComplet = new CheckBox("DAHMO Complet (+ Pays chaud/froid");
+        hospitalGrid.add(DAHMOComplet, 0, 2, 2, 1);
 
-        CheckBox HotColdcountry = new CheckBox("Pays chaud/froid");
-
-
+        /*
         Label quantityLabel = new Label("Qty : ");
-
+        hospitalGrid.add(base, 0,0);
         TextField quantity = new TextField();
-
-
-        CheckBox DAHMOComplet = new CheckBox("DAHMO Complet");
-
+        hospitalGrid.add(base, 0,0);
+        */
         // ---------- DAC ------------------
 
-        Label DAC = new Label("DAC");
-
+        Label DAC = new Label(" ---------------- DAC --------------");
+        hospitalGrid.add(DAC, 0, 3, 2, 1);
+        CheckBox DACComplet = new CheckBox("DAC Complet (w/ Pays chaud & froid");
+        hospitalGrid.add(DACComplet, 0, 4, 2, 1);
         CheckBox hotCountry = new CheckBox("Pays chaud");
-
+        hospitalGrid.add(hotCountry, 0, 5, 1, 1);
         CheckBox coldCountry = new CheckBox("Pays froid");
-
-        // ---------- Base Vie ------------
-
+        hospitalGrid.add(coldCountry, 1, 5, 1, 1);
 
 
+        // ---------- Base Vie ( min: 41m3 / 11t  max: 59m3 / 14,4t ------------
+
+        Label detachementBase = new Label("------ Detachement Commandement Logistique Vie ------");
+        // lot complementaire (douche, cuisine, etc..) add 2,3 t & 10m3 = complet donc chaud + froid
+        hospitalGrid.add(detachementBase, 0, 6, 2, 1);
+        CheckBox longueDuree = new CheckBox("Mission longue duree (w/ pays chaud/froid");
+        hospitalGrid.add(longueDuree, 0, 7, 2, 1);
+        // add 0,4 t & 2 m3
+        CheckBox hotCountryBase = new CheckBox("Pays chaud");
+        hospitalGrid.add(hotCountryBase, 0, 8, 1, 1);
+        // add 0,7 t & 6 m3
+        CheckBox coldCountryBase = new CheckBox("Pays froid");
+        hospitalGrid.add(coldCountryBase, 1, 8, 1, 1);
 
 
+        return hospitalGrid;
+    }
 
+    public static AnchorPane addHospitalPane(GridPane grid) {
 
+        AnchorPane hospitalPane = new AnchorPane();
+        Button buttonReset = new Button("Reset");
+        Button buttonValider = new Button("Valider");
 
+        HBox hb = new HBox();
+        hb.setPadding(new Insets(0, 10, 10, 10));
+        hb.setSpacing(10);
+        hb.getChildren().addAll(buttonReset, buttonValider);
 
+        hospitalPane.getChildren().addAll(grid, hb);   // Add grid from Example 1-5
+        AnchorPane.setBottomAnchor(hb, 8.0);
+        AnchorPane.setRightAnchor(hb, 5.0);
+        AnchorPane.setTopAnchor(grid, 10.0);
 
         return hospitalPane;
     }
+
+    // Structure Pane ---------
 
     public static GridPane addStructurePane() {
 
@@ -249,11 +289,14 @@ public class View2 implements IView {
         return colisPane;
     }
 
+    // Medicament Pane ---------
+
     public static GridPane addMedicamentPane() {
         GridPane medicamentPane = new GridPane();
         return medicamentPane;
     }
 
+    //         ---- Main Element Pane ----
     public static BorderPane addAddElementPane() {
         BorderPane mainPane = new BorderPane();
 
@@ -261,7 +304,7 @@ public class View2 implements IView {
         mainPane.setTop(addAddElementBar());
 
         // Add by default the hospital pane, will be changed after
-        mainPane.setCenter(addHospitalPane());
+        mainPane.setCenter(addHospitalPane(addHospitalGrid()));
 
         return mainPane;
     }
