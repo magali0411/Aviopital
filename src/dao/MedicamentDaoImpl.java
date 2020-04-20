@@ -18,7 +18,7 @@ import app.transport.Avion;
 public class MedicamentDaoImpl implements MedicamentDao{
 	
 	private static MedicamentDaoImpl instance = null;
-	private Factory f;
+	private static Factory f = Factory.getInstance();
 	private Connection connexion;
 	public ArrayList<Caisse> allCaissesMedicamentfromDB = new ArrayList<>();
 
@@ -77,7 +77,7 @@ public class MedicamentDaoImpl implements MedicamentDao{
 
 	private void addAll() {
 		try {
-			connexion = f.getConnection();
+			connexion = f.getInstance().getConnection();
 			Statement statement = connexion.createStatement();
 
 			if ( statement.execute( "Select id,product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7 FROM caisses_medicaments " ) ){
@@ -133,6 +133,7 @@ public class MedicamentDaoImpl implements MedicamentDao{
 	
 
 	public ArrayList<Caisse> getAll() {
+		this.getInstance();
 		return this.allCaissesMedicamentfromDB;
 	
 	}

@@ -15,7 +15,7 @@ public class AvionDaoImpl implements AvionDao {
 	
 	
 	private static AvionDaoImpl instance = null;
-	private Factory f = Factory.getInstance();
+	private static Factory f = Factory.getInstance();
 	private Connection connexion;
 	public ArrayList<Avion> allAvionfromDB = new ArrayList<>();
 
@@ -95,7 +95,7 @@ public class AvionDaoImpl implements AvionDao {
 		
 		
 		try {
-			connexion = f.getConnection();
+			connexion = f.getInstance().getConnection();
 			Statement statement = connexion.createStatement();
 
 			if ( statement.execute( "Select id, name, max_load, door_size_w, door_size_h, cargo_hold_l, cargo_hold_w, cargo_hold_h,useable_volume, runway_requirement, load_range, ferry_range, cruise_speed, fuel_burn, pallet_positions FROM AVIONS " ) ){

@@ -17,7 +17,7 @@ import app.hopital.Structure;
 public class ColisDaoImpl implements ColisDao{
 	
 	private static ColisDaoImpl instance = null;
-	private Factory f = Factory.getInstance();
+	private static Factory f = Factory.getInstance();
 	private Connection connexion;
 	public ArrayList<Caisse> allCaissesStructureFromDB = new ArrayList<>(); 
 	
@@ -36,7 +36,7 @@ public class ColisDaoImpl implements ColisDao{
 		
 		
 		try {
-			connexion = f.getConnection();
+			connexion = f.getInstance().getConnection();
 			Statement statement = connexion.createStatement();
 
 			if ( statement.execute( "Select id, affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations FROM COLIS " ) ){
