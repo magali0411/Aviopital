@@ -2,10 +2,6 @@ package app.hopital;
 
 public interface Structurel {
 	
-	String getModule();
-	
-	String getSecteur();
-	
-	Boolean getOption();
+	void Completer();
 
 }

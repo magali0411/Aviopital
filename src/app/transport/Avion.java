@@ -29,6 +29,34 @@ public class Avion extends Transport implements Serializable{
 	
 	public Avion() { }
 	
+	public Avion(String name,
+			String id,
+			float maxLoad, 
+			int dorrSizeH, int dorrSizeW, 
+			int cargoHoldL, int cargoHoldW, int cargoHoldH,
+			int volume, 
+			int runwayReq, 
+			int loadRange, 
+			int ferryRange, 
+			int cruiseSpeed,
+			float fuelBrun, 
+			String palletPos) {
+		super(name, id);
+		this.maxLoad = maxLoad; // poids maximal
+		this.dorrSizeH = dorrSizeH; // door size
+		this.dorrSizeW = dorrSizeW;
+		this.cargoHoldL = cargoHoldL; // cargo hold = soute
+		this.cargoHoldW = cargoHoldW;
+		this.cargoHoldH = cargoHoldH;
+		this.volume = volume;
+		this.runwayReq = runwayReq;
+		this.loadRange = loadRange;
+		this.ferryRange = ferryRange;
+		this.fuelBrun = fuelBrun;
+		this.cruiseSpeed = cruiseSpeed;
+		this.palletPos = palletPos;
+	}
+	
 	
 	public Avion(float maxLoad, 
 			int dorrSizeH, int dorrSizeW, 

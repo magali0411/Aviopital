@@ -19,6 +19,17 @@ public abstract class Transport {
 
 	public Transport() { }
 	
+	public Transport(String name ) {
+		this.name = name;
+	}
+	
+	public Transport(String name, String id ) {
+		this.name = name;
+		this.id = id;
+	}
+	
+	
+	
 	public Transport(String name, ArrayList<Caisse> listCaisses ) {
 		this.name = name;
 		this.listCaisses = listCaisses;

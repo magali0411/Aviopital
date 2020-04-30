@@ -2,35 +2,21 @@ package app.hopital;
 
 public class Structure extends Materiel implements Structurel{
 	
-	private String module;
 	private String secteur;
-	
+	private String nominal;
+	private Boolean complet;
 	private Boolean optionnel;
 
-	public Structure(String id, String name, String module, String secteur, String optionnel) {
+	public Structure(String id, String name, String secteur, String optionnel) {
 		super(id,name);
-		setModule(module);
 		setSecteur(secteur);
 		setOptionnel(optionnel);		
 	}
-
+	
 	@Override
-	public String getModule() {
-		return this.module;
-	}
-
-	@Override
-	public String getSecteur() {
-		return this.secteur;
-	}
-
-	@Override
-	public Boolean getOption() {
-		return this.optionnel;
-	}
-
-	public void setModule(String module) {
-		this.module = module;
+	public void Completer() {
+		this.setComplet(true);
+		
 	}
 
 	public Boolean getOptionnel() {
@@ -44,9 +30,31 @@ public class Structure extends Materiel implements Structurel{
 		else 
 			this.optionnel = false;
 	}
+	
+	public String getSecteur() {
+		return this.secteur;
+	}
 
 	public void setSecteur(String secteur) {
 		this.secteur = secteur;
+	}
+
+
+
+	public String getNominal() {
+		return nominal;
+	}
+
+	public void setNominal(String nominal) {
+		this.nominal = nominal;
+	}
+
+	public Boolean getComplet() {
+		return complet;
+	}
+
+	public void setComplet(Boolean complet) {
+		this.complet = complet;
 	}
 
 }

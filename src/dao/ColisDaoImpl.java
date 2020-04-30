@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 import app.colis.Caisse;
 import app.colis.ColisStructure;
-import app.colis.Lot;
 import app.hopital.Materiel;
 import app.hopital.Structure;
 
@@ -19,7 +18,6 @@ public class ColisDaoImpl implements ColisDao{
 	private static ColisDaoImpl instance = null;
 	private static Factory f = Factory.getInstance();
 	private Connection connexion;
-	public ArrayList<Caisse> allCaissesStructureFromDB = new ArrayList<>(); 
 	
 	private static final Logger logger = Logger.getLogger("Escrim");
 
@@ -27,25 +25,24 @@ public class ColisDaoImpl implements ColisDao{
 	public static ColisDaoImpl getInstance() {
 		if (instance == null) {
 			instance = new ColisDaoImpl();
-			instance.addAll();
 		}
 		return instance;
 	}
 	
-	public void addAll() {
+	public ArrayList<Caisse> getCaisseByName(String name) {
 		
-		
+		ArrayList<Caisse> listCaisse = new ArrayList<>();
 		try {
 			connexion = f.getInstance().getConnection();
 			Statement statement = connexion.createStatement();
 
-			if ( statement.execute( "Select id, affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations FROM COLIS " ) ){
+			if ( statement.execute( "Select id,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations "
+					+ "FROM COLIS " ) ){
 				ResultSet resultSet = statement.getResultSet();
+				
 				while ( resultSet.next() ) {
 					
-					
 					String id = resultSet.getString("id");
-					String affectaire = resultSet.getString("affectataire");
 					String module = resultSet.getString("module");
 					String nominal_optionnel = resultSet.getString("nominal_optionnel");
 					String secteur = resultSet.getString("secteur");
@@ -58,17 +55,13 @@ public class ColisDaoImpl implements ColisDao{
 					int poids = resultSet.getInt("poids");
 					String observations = resultSet.getString("observations");
 					
-					Caisse caisse = new ColisStructure(affectaire, num_colis,poids, volume, 120,80,100, secteur,
+					String id_structure = String.valueOf(num_colis);
+					
+					Caisse caisse = new ColisStructure(name, num_colis,poids, volume, 120,80,100, secteur,
 							designations_colis, precision_articles);
 					
-					Materiel m = new Structure(id,nature_colis,module,secteur,nominal_optionnel);
-					m.setCaracteristiques(observations);
-					Lot l = new Lot(m,1,volume);
-					
-
-					logger.info("Caisse structure ajouté " + caisse.getName());
-					logger.info("Matériel structure ajouté " + m.getName());
-					allCaissesStructureFromDB.add(caisse);
+					Materiel structure = new Structure(id_structure,nature_colis,secteur,nominal_optionnel);
+					caisse.addMateriel(structure);
 				}
 			}
 
@@ -78,32 +71,16 @@ public class ColisDaoImpl implements ColisDao{
 		} catch (Exception e) {
 			logger.severe( e.getClass().getName() + ": " + e.getMessage() );
 		}
-
-	}
-	
-	public ArrayList<Caisse> getAll() {
-		return this.allCaissesStructureFromDB;
+		
+		return listCaisse;
 		
 	}
 	
-	public ArrayList<Caisse> getCaisseByName(String name) {
-		
-		ArrayList<Caisse> listCaisses = new ArrayList<>();
-		
-		for( Caisse c : this.getAll()) {
-			
-			if (c.getName() == name) {
-				listCaisses.add(c);
-			}
-			
-		}
-			
-		return listCaisses;
-	}
 	
   public static void main(String[] args) {
 	
-	 ColisDaoImpl.getInstance();
+	  ColisDaoImpl Icolis = ColisDaoImpl.getInstance();
+	  
 	
 	
 }

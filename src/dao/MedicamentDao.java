@@ -6,12 +6,13 @@ import app.colis.Caisse;
 import app.hopital.Medicament;
 
 public interface MedicamentDao {
+
 	
 	/**
 	 * Méthode pour créer un médicament dans la base de données
 	 * @param medicament
 	 */
-	void create( Medicament medicament );
+	void create( Medicament medicament, Caisse caisse );
 
 	/**
 	 * Méthode pour trouver un médicament selon son ID 
@@ -21,10 +22,25 @@ public interface MedicamentDao {
 	Medicament find( String id );
 	
 	/**
-	 * Méthode pour récupérer toutes les caisses de médicament du même nom 
+	 * Méthode pour trouver toutes les caisses contenant un médicment
+	 * @param id
+	 * @return
+	 */
+	ArrayList<Caisse> findCaisse( String id );
+	
+	/**
+	 * Méthode pour récupérer une caisse medicament
 	 * @param name
 	 * @return
 	 */
-	public ArrayList<Caisse> getCaisseMedicamentByName(String name);
+	public Caisse getCaisseMedicamentByName(String name_caisse);
+	
+	/**
+	 * Méthode pour trouver tous les médicament contenu dans une caisse
+	 * @param name
+	 * @return
+	 */
+	public ArrayList<Medicament> contient(String name_caisse);
+	
 
 }

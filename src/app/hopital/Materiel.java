@@ -18,6 +18,11 @@ public abstract class Materiel{
 	}
 
 
+	public Materiel(String name) {
+		setName(name);
+	}
+
+
 	public String getCaracteristiques() {
 		return caracteristiques;
 	}
@@ -41,10 +46,6 @@ public abstract class Materiel{
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public void setCaracteristiques(String caracteristiques) {
-		this.caracteristiques = caracteristiques;
 	}
 	
 

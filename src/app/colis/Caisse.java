@@ -3,6 +3,8 @@ package app.colis;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import app.hopital.Materiel;
+
 public abstract class Caisse implements Serializable{
 	
 	// indexation
@@ -18,7 +20,7 @@ public abstract class Caisse implements Serializable{
 	private int longueur;
 
 	// material list
-	private ArrayList<Lot> listMateriel = new ArrayList<Lot>();
+	private ArrayList<Materiel> listMateriel = new ArrayList<Materiel>();
 	
 	//dispo
 	private boolean disponible;
@@ -46,13 +48,19 @@ public abstract class Caisse implements Serializable{
 		setLongueur(longueur);
 	}
 
+	public Caisse(String nom_caisse, int num_caisse) {
+		setName(nom_caisse);
+		setNum(num_caisse);
+	}
+
+
 	/**
-	 * Méthode pour ajouter un nouveau lot de matériel
-	 * @param l
+	 * Méthode pour ajouter un nouveau matériel
+	 * @param Materiel
 	 */
 	
-	public void addLot(Lot l) {
-		listMateriel.add(l);
+	public void addMateriel(Materiel m) {
+		listMateriel.add(m);
 	}
 
 
@@ -108,11 +116,11 @@ public abstract class Caisse implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public ArrayList<Lot> getListMateriel() {
+	public ArrayList<Materiel> getListMateriel() {
 		return listMateriel;
 	}
 
-	public void setListMateriel(ArrayList<Lot> listMateriel) {
+	public void setListMateriel(ArrayList<Materiel> listMateriel) {
 		this.listMateriel = listMateriel;
 	}
 

@@ -20,30 +20,13 @@ public interface AvionDao {
 	 * @return
 	 */
 	Avion find( String id );
-	
+
 	/**
-	 * Méthode pour récupérer tous les objets de la base de données
-	 */
-	void addAll();
-	
-	
-	/**
-	 * Méthode pour récupérer dans une liste tous les avions de la base de données
-	 * @return
-	 */
-	public List<Avion> getAll();
-	
-	/**
-	 * Méthode pour récupérer tous les noms des avions dans une liste
-	 * @return
-	 */
-	public List<String> getAllPlaneName();
-	
-	/**
-	 * Méthode pour retrouver un avion grâce à son nom
+	 * Méthode pour trouver un objet dans la base de données selon son nom
 	 * @param name
 	 * @return
 	 */
-	public Avion getPlaneByName(String name);
+	Avion findByName( String name );
+	
 
 }
