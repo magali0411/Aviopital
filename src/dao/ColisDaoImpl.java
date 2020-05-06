@@ -113,20 +113,23 @@ public class ColisDaoImpl implements ColisDao{
 	public ArrayList<String> getAllOptionnel() {
 		ArrayList<String> listNameCaisse = new ArrayList<>();
 		
+
+		String requete =  "Select nominal_optionnel, designations "
+				+ "FROM COLIS "
+				+ "WHERE nominal_optionnel = ? ";
+		
+		PreparedStatement preparedStatment;
+		
 		try {
 			connexion = f.getInstance().getConnection();
-			PreparedStatement preparedStatement = null;
-
-			String requete =  "Select nominal_optionnel "
-					+ "FROM COLIS "
-					+ "WHERE nominal_optionnel = ? ";
-			preparedStatement.setString(1, "Optionnel");
 			
-			preparedStatement = connexion.prepareStatement(requete);
-			preparedStatement.execute();
-			preparedStatement.close();
+			preparedStatment = connexion.prepareStatement(requete);
 
-			ResultSet resultSet = preparedStatement.getResultSet();
+			preparedStatment.setString(1, "Optionnel");
+
+			preparedStatment.execute();
+
+			ResultSet resultSet = preparedStatment.getResultSet();
 				
 				while ( resultSet.next() ) {
 					
@@ -135,7 +138,7 @@ public class ColisDaoImpl implements ColisDao{
 					listNameCaisse.add(designations);
 				}
 
-				preparedStatement.close();
+				preparedStatment.close();
 			
 			
 		} catch (Exception e) {
@@ -149,58 +152,64 @@ public class ColisDaoImpl implements ColisDao{
 	@Override
 	public ArrayList<String> getAllPChaud() {
 		
-	ArrayList<String> listNameCaisse = new ArrayList<>();
-	
-	try {
-		connexion = f.getInstance().getConnection();
-		PreparedStatement preparedStatement = null;
+		ArrayList<String> listNameCaisse = new ArrayList<>();
+		
 
-		String requete =  "Select nominal_optionnel "
+		String requete =  "Select nominal_optionnel, designations "
 				+ "FROM COLIS "
 				+ "WHERE nominal_optionnel = ? ";
-		preparedStatement.setString(1, "P. chauds");
 		
-		preparedStatement = connexion.prepareStatement(requete);
-		preparedStatement.execute();
-		preparedStatement.close();
-
-		ResultSet resultSet = preparedStatement.getResultSet();
+		PreparedStatement preparedStatment;
+		
+		try {
+			connexion = f.getInstance().getConnection();
 			
-			while ( resultSet.next() ) {
-				
-				String designations = resultSet.getString("designations");
-				
-				listNameCaisse.add(designations);
-			}
+			preparedStatment = connexion.prepareStatement(requete);
 
-			preparedStatement.close();
+			preparedStatment.setString(1, "P. chauds");
+
+			preparedStatment.execute();
+
+			ResultSet resultSet = preparedStatment.getResultSet();
+				
+				while ( resultSet.next() ) {
+					
+					String designations = resultSet.getString("designations");
+					
+					listNameCaisse.add(designations);
+				}
+
+				preparedStatment.close();
+			
+			
+		} catch (Exception e) {
+			logger.severe( e.getClass().getName() + ": " + e.getMessage() );
+		}
 		
-		
-	} catch (Exception e) {
-		logger.severe( e.getClass().getName() + ": " + e.getMessage() );
-	}
-	
-	return listNameCaisse;
+		return listNameCaisse;
 }
 
 @Override
 public ArrayList<String> getAllPFroid() {
 	ArrayList<String> listNameCaisse = new ArrayList<>();
 	
+
+	String requete =  "Select nominal_optionnel, designations "
+			+ "FROM COLIS "
+			+ "WHERE nominal_optionnel = ? ";
+	
+	PreparedStatement preparedStatment;
+	
 	try {
 		connexion = f.getInstance().getConnection();
-		PreparedStatement preparedStatement = null;
-
-		String requete =  "Select nominal_optionnel "
-				+ "FROM COLIS "
-				+ "WHERE nominal_optionnel = ? ";
-		preparedStatement.setString(1, "P. froids");
 		
-		preparedStatement = connexion.prepareStatement(requete);
-		preparedStatement.execute();
-		preparedStatement.close();
+		preparedStatment = connexion.prepareStatement(requete);
 
-		ResultSet resultSet = preparedStatement.getResultSet();
+		preparedStatment.setString(1, "P. froids");
+
+		preparedStatment.execute();
+
+		ResultSet resultSet = preparedStatment.getResultSet();
 			
 			while ( resultSet.next() ) {
 				
@@ -209,12 +218,12 @@ public ArrayList<String> getAllPFroid() {
 				listNameCaisse.add(designations);
 			}
 
-			preparedStatement.close();
+			preparedStatment.close();
 		
 		
-		} catch (Exception e) {
-			logger.severe( e.getClass().getName() + ": " + e.getMessage() );
-		}
+	} catch (Exception e) {
+		logger.severe( e.getClass().getName() + ": " + e.getMessage() );
+	}
 	
 		return listNameCaisse;
 	}
@@ -223,20 +232,23 @@ public ArrayList<String> getAllPFroid() {
 	public ArrayList<String> getAllOther() {
 	ArrayList<String> listNameCaisse = new ArrayList<>();
 	
+
+	String requete =  "Select nominal_optionnel, designations "
+			+ "FROM COLIS "
+			+ "WHERE nominal_optionnel = ? ";
+	
+	PreparedStatement preparedStatment;
+	
 	try {
 		connexion = f.getInstance().getConnection();
-		PreparedStatement preparedStatement = null;
-
-		String requete =  "Select nominal_optionnel "
-				+ "FROM COLIS "
-				+ "WHERE nominal_optionnel = ? ";
-		preparedStatement.setString(1, "_");
 		
-		preparedStatement = connexion.prepareStatement(requete);
-		preparedStatement.execute();
-		preparedStatement.close();
+		preparedStatment = connexion.prepareStatement(requete);
 
-		ResultSet resultSet = preparedStatement.getResultSet();
+		preparedStatment.setString(1, "_");
+
+		preparedStatment.execute();
+
+		ResultSet resultSet = preparedStatment.getResultSet();
 			
 			while ( resultSet.next() ) {
 				
@@ -245,12 +257,12 @@ public ArrayList<String> getAllPFroid() {
 				listNameCaisse.add(designations);
 			}
 
-			preparedStatement.close();
+			preparedStatment.close();
 		
 		
-		} catch (Exception e) {
-			logger.severe( e.getClass().getName() + ": " + e.getMessage() );
-		}
+	} catch (Exception e) {
+		logger.severe( e.getClass().getName() + ": " + e.getMessage() );
+	}
 	
 		return listNameCaisse;
 	}
@@ -259,10 +271,10 @@ public ArrayList<String> getAllPFroid() {
 	@Override
 	public Caisse getCaisseByDesignation(String designation) {
 		
-		Caisse newCaisse = null;
+		ColisStructure newCaisse = null;
 		
 		
-		String query = "Select id,affectaire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations,designations " 
+		String query = "Select id,affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations,designations " 
 				+ "FROM COLIS "
 				+ "WHERE designations = ?";
 		
@@ -277,12 +289,11 @@ public ArrayList<String> getAllPFroid() {
 			
 			ResultSet resultSet = preparedStatment.getResultSet();
 			
-			// Chaque a sa propre désignation, donc on en récupère une seule
-			
+			// Chaque caisse a sa propre désignation, donc on en récupère une seule
 			if ( resultSet.next() ) {
 				
 				String id = resultSet.getString("id");
-				String affectaire = resultSet.getString("affectaire");
+				String affectaire = resultSet.getString("affectataire");
 				String module = resultSet.getString("module");
 				String nominal_optionnel = resultSet.getString("nominal_optionnel");
 				String secteur = resultSet.getString("secteur");
@@ -302,7 +313,13 @@ public ArrayList<String> getAllPFroid() {
 				
 				Materiel structure = new Structure(id_structure,nature_colis,secteur,nominal_optionnel);
 				newCaisse.addMateriel(structure);
-				//resultSet.first();
+				
+				logger.info("Caisse ajoutée : "
+						+newCaisse.getName()
+						+ ", contenant : "
+						+ structure.getName()
+						+ " "
+						+ newCaisse.getSecteur());
 			}
 			
 			
@@ -313,8 +330,6 @@ public ArrayList<String> getAllPFroid() {
 			e.printStackTrace();
 		}
 		
-		logger.info("Caisse trouvée " + newCaisse.getName());
-		
 		return newCaisse;
 	}
 
@@ -323,6 +338,22 @@ public ArrayList<String> getAllPFroid() {
   public static void main(String[] args) {
 	
 	  ColisDaoImpl Icolis = ColisDaoImpl.getInstance();
+	  
+	  ArrayList<String> result = new ArrayList<>();
+
+	  //result = Icolis.getAllCaisseName();
+	  //result = Icolis.getAllOptionnel();
+	  
+	  //result = Icolis.getAllPChaud();
+	  
+	  //result = Icolis.getAllPFroid();
+	  
+	  //result = Icolis.getAllOther();
+	  
+
+	  System.out.println(result.toString());
+
+	 // Icolis.getCaisseByDesignation("Bac 18 / mobilier technique / (J) Pharmacie-labo / E Base Optionnel");
 	  
 	
 	
