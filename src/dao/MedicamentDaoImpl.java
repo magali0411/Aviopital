@@ -18,7 +18,7 @@ public class MedicamentDaoImpl implements MedicamentDao{
 	private static Factory f = Factory.getInstance();
 	private Connection connexion;
 	
-	private static final Logger logger = Logger.getLogger("Escrim");
+	private static final Logger logger = Logger.getLogger("aviophital.MedicamentDaoImpl");
 	
 	public static MedicamentDaoImpl getInstance() {
 		if (instance == null) {
@@ -68,6 +68,55 @@ public class MedicamentDaoImpl implements MedicamentDao{
 		}
 		
 	}
+	
+	
+
+	@Override
+	public ArrayList<String> getAllName() {
+
+		ArrayList<String> listName = new ArrayList<>();
+		
+
+		
+		String query = "Select product_name "
+				+ "FROM caisses_medicaments ";
+		
+		
+		PreparedStatement preparedStatment;
+		
+		try {
+			
+			connexion = f.getConnection();
+			preparedStatment = connexion.prepareStatement(query );	
+			preparedStatment.execute();
+			
+			ResultSet resultSet = preparedStatment.getResultSet();
+			
+			if (resultSet == null) {
+				logger.warning("Pas de médicaments dans la base");
+			} else {
+			
+				while (resultSet.next()) {
+			
+					// On récupère le médicament concerné
+					String name = resultSet.getString("product_name");		
+					listName.add(name);
+				}
+
+			}
+			
+			
+			preparedStatment.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listName;
+	}
+	
+	
 	@Override
 	public Medicament find(String id) {
 	
@@ -399,8 +448,7 @@ private ArrayList<Caisse> addAll() {
 		}
 		
 		return listcaisse;
-					
-		
+						
 	}
 	
   public static void main(String[] args) {
@@ -417,6 +465,8 @@ private ArrayList<Caisse> addAll() {
 	  
 	
   }
+
+
 
 
 

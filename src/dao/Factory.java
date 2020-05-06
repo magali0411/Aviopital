@@ -19,7 +19,7 @@ public class Factory implements Serializable{
 	private static String password;
 
 
-	private static final Logger log = Logger.getLogger("Application");
+	private static final Logger log = Logger.getLogger("aviophital.Factory");
 
 	private Factory() {
 

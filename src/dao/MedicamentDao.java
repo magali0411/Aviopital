@@ -13,6 +13,13 @@ public interface MedicamentDao {
 	 * @param medicament
 	 */
 	void create( Medicament medicament, Caisse caisse );
+	
+	
+	/**
+	 * Méthode pour récupérer les noms de tous les médicaments
+	 * @return
+	 */
+	ArrayList<String> getAllName();
 
 	/**
 	 * Méthode pour trouver un médicament selon son ID 

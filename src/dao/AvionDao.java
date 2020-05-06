@@ -27,6 +27,13 @@ public interface AvionDao {
 	 * @return
 	 */
 	Avion findByName( String name );
+
+	/**
+	 * Méthode pour récupérer la liste du nom de tous les avions
+	 * @return
+	 */
+	ArrayList<String> getAllName();
+	
 	
 
 }

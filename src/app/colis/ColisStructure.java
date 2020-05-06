@@ -6,6 +6,8 @@ public class ColisStructure extends Caisse {
 	private String secteur;
 	private String designation;
 	private String precision;
+	
+	private String module;
 
 	private boolean complet;
 
@@ -26,11 +28,12 @@ public class ColisStructure extends Caisse {
 	 */
 	
 	public ColisStructure(String name, int num, double poids, double volume, int hauteur, int largeur, int longueur, 
-			String secteur, String designations, String precision) {
+			String secteur, String designations, String precision, String module) {
 		super(name, num, poids, volume, hauteur, largeur,longueur);
 		setSecteur(secteur);
 		setDesignation(designations);
 		setPrecision(precision);
+		setModule(module);
 	}
 
 	public String getSecteur() {
@@ -63,5 +66,13 @@ public class ColisStructure extends Caisse {
 
 	public void setComplet(boolean complet) {
 		this.complet = complet;
+	}
+
+	public String getModule() {
+		return module;
+	}
+
+	public void setModule(String module) {
+		this.module = module;
 	}
 }

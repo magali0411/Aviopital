@@ -19,7 +19,7 @@ public class AvionDaoImpl implements AvionDao {
 	private Connection connexion;
 
 	
-	private static final Logger logger = Logger.getLogger("Escrim");
+	private static final Logger logger = Logger.getLogger("aviophital.AvionDaoImpl");
 
 
 
@@ -202,6 +202,53 @@ public class AvionDaoImpl implements AvionDao {
 		
 		return avion;
 	}
+	
+
+	@Override
+	public ArrayList<String> getAllName() {
+		
+		ArrayList<String> listName = new ArrayList<>();
+		
+		String query = "Select name "
+				+ "FROM AVIONS " ;
+		
+		PreparedStatement preparedStatment;
+		
+		try {
+			
+			connexion = f.getConnection();
+			preparedStatment = connexion.prepareStatement(query );	
+			preparedStatment.execute();
+			
+			ResultSet result = preparedStatment.getResultSet() ;
+			
+			if (result != null) {
+			
+				while(result.next()) {
+					String name = result.getString("name");
+				
+					listName.add(name);
+
+					
+				}
+			
+			}
+			
+			preparedStatment.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if (!listName.isEmpty()) {
+			return listName;
+		}
+		
+		logger.warning("Pas d'avion dans la base de données");
+		return null;
+
+	}
 
     
     public static void main(String[] args) {
@@ -213,6 +260,8 @@ public class AvionDaoImpl implements AvionDao {
     	
     	
     }
+
+
 	
 	
 
