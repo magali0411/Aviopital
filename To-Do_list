@@ -15,11 +15,11 @@ Dans [colis]:
 Dans [colis] & [transport]:
 - Faire fonction adéquation dimension caisse & dimension avion          [x]
 
-Dans [view]:
-- Relier model/view/controller                                          [x]
+Dans [GUI]:
+- Relier model/GUI/controller                                          [x]
 - Initialiser les event handlers                                        [x]
-- Plane view :
+- Plane GUI :
     - Trouver façon de l'accorder à une commande                        [x]
-- main view :
+- main GUI :
     - liste déroulantes avion                                           [x]
 -
