@@ -1,4 +1,4 @@
-package view;
+package GUI;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -8,7 +8,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
-import static view.View2.*;
+import static GUI.View2.*;
 
 
 public class Controller2 implements EventHandler {

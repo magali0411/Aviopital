@@ -1,4 +1,4 @@
-package view;
+package GUI;
 
 import app.transport.Avion;
 import javafx.beans.Observable;
@@ -210,7 +210,7 @@ public class View implements IView {
 
         confirm_btn.addEventHandler(Event.ANY, view_controller);
 
-        // Plane name list view
+        // Plane name list GUI
         ListView<String> avionListView = new ListView<String>();
 
 
