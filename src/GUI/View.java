@@ -62,7 +62,7 @@ public class View {
         Tab hospitalTab = new Tab("Hospital");
         hospitalTab.setContent(new Hospital(controller).getHospitalGrid());
 
-        Tab structureTab = new Tab("Colis Structure");
+        Tab structureTab = new Tab("ColisStructure Structure");
         structureTab.setContent(new Structure(controller).getStructureGrid());
 
         tabPane.getTabs().addAll(hospitalTab, structureTab);
