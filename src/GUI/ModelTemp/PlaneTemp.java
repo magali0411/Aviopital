@@ -12,6 +12,8 @@ public class PlaneTemp {
     public PlaneTemp(){
         this.load = 0.;
         this.volume = 0.;
+        this.volumeTot = 90.;
+        this.loadTot = 18.;
     }
 
     public double getVolume() {

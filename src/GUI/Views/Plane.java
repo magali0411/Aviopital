@@ -35,6 +35,8 @@ public class Plane extends ViewsModel {
 
         // Plane name
         ChoiceBox<String> planeChoice = new ChoiceBox<>();
+        planeChoice.setId("planeChoice");
+        planeChoice.addEventHandler(ActionEvent.ACTION, getController());
 
         planeChoice.getItems().addAll(FXCollections.observableArrayList(
                 "Antonov An 12",

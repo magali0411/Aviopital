@@ -1,10 +1,8 @@
 package GUI;
 
+import GUI.Views.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import GUI.Views.Hospital;
-import GUI.Views.Plane;
-import GUI.Views.Structure;
 
 public class View {
 
@@ -19,7 +17,7 @@ public class View {
     }
 
     /*
-     * ----------------- ATTRIBUTES ----------------------------
+     * ----------------- GETTER AND SETTER ----------------------------
      */
 
     public Controller getController() {
@@ -59,13 +57,16 @@ public class View {
     public TabPane addElementTabPane() {
         TabPane tabPane = new TabPane();
 
-        Tab hospitalTab = new Tab("Hospital");
+        Tab hospitalTab = new Tab("Hopital");
         hospitalTab.setContent(new Hospital(controller).getHospitalGrid());
 
-        Tab structureTab = new Tab("Colis Structure");
-        structureTab.setContent(new Structure(controller).getStructureGrid());
+        Tab structureTab = new Tab("Structure");
+        structureTab.setContent(new ColisStructure(controller).getColisStructure());
 
-        tabPane.getTabs().addAll(hospitalTab, structureTab);
+        Tab drugsTab = new Tab("Médicaments");
+        drugsTab.setContent(new ColisMedicament(controller).getMainSplitPane());
+
+        tabPane.getTabs().addAll(hospitalTab, structureTab, drugsTab);
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         return tabPane;
@@ -89,15 +90,13 @@ public class View {
         Menu file = new Menu("File");
 
         MenuItem newItem = new MenuItem("New");
-
-        file.getItems().addAll(newItem);
-
-        Menu tools = new Menu("Tools");
-
         MenuItem exportExcel = new MenuItem("Export as Excel 97");
-        MenuItem exportPdf = new MenuItem("Export as PDF");
+        MenuItem exportPDF = new MenuItem("Export as PDF");
 
-        tools.getItems().addAll(exportExcel, exportPdf);
+        file.getItems().addAll(newItem, exportExcel, exportPDF);
+
+
+
 
         Menu help = new Menu("Help");
 
@@ -105,7 +104,7 @@ public class View {
 
         help.getItems().addAll(how);
 
-        menuBar.getMenus().addAll(file, tools, help);
+        menuBar.getMenus().addAll(file, help);
 
         return menuBar;
     }

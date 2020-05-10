@@ -10,7 +10,7 @@ public abstract class Materiel{
 	protected String caracteristiques;
 	
 	public Materiel() { };
-	
+
 	
 	public Materiel(String id, String name) {
 		setId(id);

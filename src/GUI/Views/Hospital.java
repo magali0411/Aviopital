@@ -50,12 +50,16 @@ public class Hospital extends ViewsModel {
         //Label DAHMO = new Label("-------------- DAHMO ----------------");
         Separator DAHMOSep = new Separator(Orientation.HORIZONTAL);
         hospitalGrid.add(DAHMOSep, 0, 1, 2, 1);
+
         CheckBox DAHMO = new CheckBox("DAHMO");
-
         DAHMO.setId("DAHMO");
-        hospitalGrid.add(DAHMO, 0, 2, 2, 1);
+        hospitalGrid.add(DAHMO, 0, 2, 1, 1);
 
-        CheckBox DAHMOComplet = new CheckBox("DAHMO Complet (+ Pays chaud/froid");
+        CheckBox HCOption = new CheckBox("Option Pays Chaud & Froid");
+        HCOption.setId("HCOption");
+        hospitalGrid.add(HCOption, 1, 2, 1, 1);
+
+        CheckBox DAHMOComplet = new CheckBox("DAHMO Complet\nOption Pays chaud & froid");
         DAHMOComplet.setId("DAHMOComplet");
         hospitalGrid.add(DAHMOComplet, 0, 3, 2, 1);
 
@@ -70,11 +74,12 @@ public class Hospital extends ViewsModel {
         //Label DAC = new Label(" ---------------- DAC --------------");
         Separator DACSep = new Separator(Orientation.HORIZONTAL);
         hospitalGrid.add(DACSep, 0, 4, 2, 1);
+
         CheckBox DAC = new CheckBox("DAC");
         DAC.setId("DAC");
         hospitalGrid.add(DAC, 0, 5, 2, 1);
 
-        CheckBox DACComplet = new CheckBox("DAC Complet (w/ Pays chaud & froid");
+        CheckBox DACComplet = new CheckBox("DAC Complet\nOption Pays chaud & froid");
         DACComplet.setId("DACComplet");
         hospitalGrid.add(DACComplet, 0, 6, 2, 1);
 
@@ -91,19 +96,26 @@ public class Hospital extends ViewsModel {
 
         //Label detachementBase = new Label("------ Detachement Commandement Logistique Vie ------");
         Separator detachementBase = new Separator(Orientation.HORIZONTAL);
+        hospitalGrid.add(detachementBase, 0, 8, 2, 1);
+
         CheckBox baseVie = new CheckBox("Base vie");
         // lot complementaire (douche, cuisine, etc..) add 2,3 t & 10m3 = complet donc chaud + froid
-        hospitalGrid.add(detachementBase, 0, 8, 2, 1);
+        baseVie.setId("baseVie");
         hospitalGrid.add(baseVie, 0, 9, 2, 1);
+
         CheckBox longueDuree = new CheckBox("Mission longue duree (w/ pays chaud/froid");
+        longueDuree.setId("MLongueDuree");
         hospitalGrid.add(longueDuree, 0, 10, 2, 1);
         // add 0,4 t & 2 m3
+
         CheckBox hotCountryBase = new CheckBox("Pays chaud");
+        hotCountryBase.setId("base_hot");
         hospitalGrid.add(hotCountryBase, 0, 11, 1, 1);
         // add 0,7 t & 6 m3
-        CheckBox coldCountryBase = new CheckBox("Pays froid");
-        hospitalGrid.add(coldCountryBase, 1, 11, 1, 1);
 
+        CheckBox coldCountryBase = new CheckBox("Pays froid");
+        coldCountryBase.setId("base_cold");
+        hospitalGrid.add(coldCountryBase, 1, 11, 1, 1);
 
         return hospitalGrid;
     }
