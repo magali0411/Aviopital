@@ -22,7 +22,16 @@ public class Avion extends Transport implements Serializable{
 	private float fuelBrun;
 	private int cruiseSpeed;
 	private String palletPos;
-	
+
+	private int qty;
+
+
+	private int currentVolume;
+	private float currentLoad;
+
+	private int volumeTot;
+	private float LoadTot;
+
 	private static final Logger logger = Logger.getLogger("Escrim");
 
 	
@@ -108,6 +117,12 @@ public class Avion extends Transport implements Serializable{
 		
 		return true;
 		
+	}
+
+	public void modifyLoadAndVolume(int qty){
+		this.qty = qty;
+		volumeTot = qty * currentVolume;
+		LoadTot = qty * currentLoad;
 	}
 	
 
@@ -215,6 +230,13 @@ public class Avion extends Transport implements Serializable{
 		this.cargoHoldL = cargoHoldL;
 	}
 
+	public int getQty() {
+		return qty;
+	}
+
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
 
 	@Override
 	public boolean Fit(Caisse caisse) {

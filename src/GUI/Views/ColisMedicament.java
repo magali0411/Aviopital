@@ -1,28 +1,27 @@
 package GUI.Views;
 
 import GUI.Controller;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class ColisMedicament extends ViewsModel{
 
-    private SplitPane mainSplitPane;
+    private VBox mainVBox;
     private ListView<String> preselectedDrugs;
     private ListView<String> addingDrugs;
 
     public ColisMedicament(Controller controller) {
         super(controller);
-        this.mainSplitPane = initSplitPane();
+        this.mainVBox = initVBox();
     }
 
-    public SplitPane getMainSplitPane() {
-        return mainSplitPane;
+    public VBox getMainVBox() {
+        return mainVBox;
     }
 
-    public void setMainSplitPane(SplitPane mainSplitPane) {
-        this.mainSplitPane = mainSplitPane;
+    public void setMainVBox(VBox mainVBox) {
+        this.mainVBox = mainVBox;
     }
 
     public ListView<String> getPreselectedDrugs() {
@@ -57,7 +56,9 @@ public class ColisMedicament extends ViewsModel{
         return listView;
     }
 
-    public SplitPane initSplitPane(){
+    public VBox initVBox(){
+
+        VBox vBox = new VBox();
 
         SplitPane splitPane = new SplitPane();
 
@@ -69,8 +70,16 @@ public class ColisMedicament extends ViewsModel{
 
         splitPane.getItems().addAll(titledPanePreSelected, titledPaneAddingDrugs);
 
-        this.mainSplitPane = splitPane;
+        HBox hBox = new HBox();
+        Button add = new Button("<");
+        Button remove = new Button(">");
 
-        return splitPane;
+        hBox.getChildren().addAll(add,remove);
+
+        vBox.getChildren().addAll(splitPane, hBox);
+
+        this.mainVBox = vBox;
+
+        return vBox;
     }
 }

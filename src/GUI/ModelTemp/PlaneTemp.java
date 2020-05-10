@@ -3,17 +3,29 @@ package GUI.ModelTemp;
 public class PlaneTemp {
 
     private double volume;
-    private double load;
+    private double maxLoad;
+
+    private double currentVolume = 0.;
+    private double currentLoad = 0.;
 
     private double volumeTot;
     private double loadTot;
 
+    private int qty;
+
 
     public PlaneTemp(){
-        this.load = 0.;
-        this.volume = 0.;
-        this.volumeTot = 90.;
-        this.loadTot = 18.;
+        this.qty = 1;
+        this.volume = 90.;
+        this.maxLoad = 18.;
+        this.volumeTot = this.volume;
+        this.loadTot = maxLoad;
+    }
+
+    public void modifyLoadAndVolume(int qty){
+        this.qty = qty;
+        volumeTot = qty * volume;
+        loadTot = qty * maxLoad;
     }
 
     public double getVolume() {
@@ -24,14 +36,29 @@ public class PlaneTemp {
         this.volume = volume;
     }
 
-    public double getLoad() {
-        return load;
+    public double getMaxLoad() {
+        return maxLoad;
     }
 
-    public void setLoad(double load) {
-        this.load = load;
+    public void setMaxLoad(double maxLoad) {
+        this.maxLoad = maxLoad;
     }
 
+    public double getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentVolume(double currentVolume) {
+        this.currentVolume = currentVolume;
+    }
+
+    public double getCurrentLoad() {
+        return currentLoad;
+    }
+
+    public void setCurrentLoad(double currentLoad) {
+        this.currentLoad = currentLoad;
+    }
 
     public double getVolumeTot() {
         return volumeTot;
@@ -47,5 +74,13 @@ public class PlaneTemp {
 
     public void setLoadTot(double loadTot) {
         this.loadTot = loadTot;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 }

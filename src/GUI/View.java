@@ -10,6 +10,8 @@ public class View {
     private BorderPane root;
 
     private Plane plane;
+    private ColisStructure colisStructure;
+    private ColisMedicament colisMedicament;
 
     private Label log = new Label("Logs");
 
@@ -64,7 +66,7 @@ public class View {
         structureTab.setContent(new ColisStructure(controller).getColisStructure());
 
         Tab drugsTab = new Tab("Médicaments");
-        drugsTab.setContent(new ColisMedicament(controller).getMainSplitPane());
+        drugsTab.setContent(new ColisMedicament(controller).getMainVBox());
 
         tabPane.getTabs().addAll(hospitalTab, structureTab, drugsTab);
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
