@@ -2,13 +2,12 @@ package GUI;
 
 import DAO.Factory;
 import app.transport.Avion;
-import com.sun.glass.ui.Accessible;
+//import com.sun.glass.ui.Accessible;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
-import GUI.ModelTemp.PlaneTemp;
 
 import java.util.ArrayList;
 
