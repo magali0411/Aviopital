@@ -2,8 +2,8 @@ package DAO;
 
 import java.util.ArrayList;
 
-import app.colis.Caisse;
-import app.hopital.Medicament;
+import MODEL.colis.Caisse;
+import MODEL.hopital.Medicament;
 
 public interface MedicamentDao {
 

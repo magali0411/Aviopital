@@ -1,0 +1,230 @@
+drop table caisses_medicaments;
+create table caisses_medicaments(id int not null auto_increment, product_name varchar(40), dci varchar(40), forme_dosage varchar(30), DLU varchar(10), quantity int(4), id_lot varchar(20), classe_therapeutique varchar(40), num_caisse int(4), caisse varchar(20), dotation_U7 varchar(10));
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('ADRENALINE', 'ADRENALINE', 'amp 1mg/1ml', '01/03/12', 100, '102204', 'Electrolytes', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('ADRENALINE', 'ADRENALINE', 'amp 5mg/5ml', '01/09/12', 50, '102700', 'Electrolytes', 410, 'DIV1 cardio hemato', '80');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('ASPEGIC', 'LYSINE ACETYLSALICYLATE', 'inj 500mg/5ml', '30/11/12', 80, '0y413', 'Anti pyrétique', 410, 'DIV1 cardio hemato', '28');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('ATROPINE', 'ATROPINE', 'amp 1mg/ml', '01/10/12', 100, '92856', 'Electrolytes', 410, 'DIV1 cardio hemato', '160');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('ATROPINE', 'ATROPINE', 'amp 1mg/ml', '01/08/12', 80, '70222', 'Electrolytes', 410, 'DIV1 cardio hemato', '160');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('AVLOCARDYL', 'PROPANOLOL', 'inj', '01/09/13', 10, 'pj40144', 'Cardio beta bloquant', 410, 'DIV1 cardio hemato', '10');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('BICAR 8,4%', 'bicarbonate sodium', '20 ml', '01/10/14', 50, '92807', 'Electrolytes', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('BICAR 8,4%', 'bicarbonate sodium', '20 ml', '01/03/15', 100, '102186', 'Electrolytes', 410, 'DIV1 cardio hemato', '30');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('CATAPRESSAN', 'clopidine', 'inj', '01/02/15', 20, 'NA', 'Cardio antihypotenseur', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('CORDARONE', 'AMIODARONE', 'inj 150mg/3ml', '01/04/12', 25, '24361', 'Cardio antiarythmique', 410, 'DIV1 cardio hemato', '36');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('DIGOXINE', 'DIGOXINE', 'comp 0,25mg', '01/02/13', 30, '5004', 'Cardio digitallique', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('EXACYL', 'ACIDE TRANEXAMIQUE', 'inj 500mg/5ml', '01/03/12', 20, '222', 'NA', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('FUROSEMIDE-LASILIX', 'FUROSEMIDE', 'inj 10mg/2ml', '01/02/13', 100, '102161', 'Cardio diuretique', 410, 'DIV1 cardio hemato', '65');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('FUROSEMIDE-LASILIX', 'FUROSEMIDE', 'comp 40mg', '01/05/13', 40, '0ch8c', 'Cardio diuretique', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('HEPARINE SODIQUE', 'HEPARINE SODIQUE', 'inj 5000UI', '01/02/15', 60, '230', 'Cardio antithrombotique', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('HEPARINE SODIQUE', 'HEPARINE SODIQUE', 'inj 25000UI', '01/10/13', 20, '122189', 'Cardio antithrombotique', 410, 'DIV1 cardio hemato', '6');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('IOPAMIRON 370', 'Iopamidol', '370 mg/200ml', '01/07/13', 2, 'E8B552', 'Produit de contraste', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('IOPAMIRON 300', 'Iopamidol', '370 mg/200ml', '01/07/13', 3, '71bc8b554', 'Produit de contraste', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('ISOCARD', 'ISOSORBIDE DINITRATE', 'spray 1,25mg/dose', '01/05/12', 5, 'ch105', 'Cardio der nitré', 410, 'DIV1 cardio hemato', '6');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('KCl', 'Chlorure potassium', '10% inj', '01/03/14', 50, '4400520', 'Electrolytes', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Lovenox', 'enoxaparine', 'inj 10000ui', 'janv-14', 50, '1la46', 'Cardio antithrombotique', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Lovenox', 'enoxaparine', 'inj 4000ui', 'sept-12', 150, 'NA', 'Cardio antithrombotique', 410, 'DIV1 cardio hemato', '112 en 0,2');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Lovenox', 'enoxaparine', 'inj 4000ui', '01/04/13', 150, '24361', 'Cardio antithrombotique', 410, 'DIV1 cardio hemato', '56');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('LOXEN', 'NICARDIPINE', 'inj 10mg/10ml', '01/03/13', 50, 's0405', 'Cardio antihypertenseur', 410, 'DIV1 cardio hemato', '26');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('NORADRENALINE', 'noradrenaline', 'inj 8mg/5ml', '01/02/13', 50, 't2213b', 'Amine sympatomimetique', 410, 'DIV1 cardio hemato', '4');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('PROTAMINE CHOAY', 'PROTAMINE SULFATE', 'inj 10 000uh/10ml', '01/02/13', 2, '11N0030', 'antidote', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('PROTAMINE CHOAY', 'PROTAMINE SULFATE', 'inj 10 000uh/10ml', '01/10/12', 3, '40n0020', 'antidote', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('RISORDAN', 'ISEOSORBIDE DINITRATE', 'inj 10mg/10ml', '01/09/12', 50, '1702', 'Cardio der nitré', 410, 'DIV1 cardio hemato', '24');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('TENORMINE IV', 'ATENOLOL', 'inj 5mg/10ml', '01/07/12', 10, 'pj40187', 'NA', 410, 'DIV1 cardio hemato', '6');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('TILDIEM', 'DILTIAZEM', 'inj 25mg', '01/03/12', 20, '25', 'Cardio antihypertenseur', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Vit K1', 'Vit K1', '2mg', 'mars-12', 12, 'f004f71', 'Vitamines', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('VITAMINE K1', 'PHYTOMENADIONE', 'amp buv et inj 10mg/1ml', '01/03/12', 12, 'NA', 'NA', 410, 'DIV1 cardio hemato', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Amoxicilline', 'Amoxicilline', '1g per os', '01/01/12', 266, 'fa9109', 'Antibiotique', 411, 'ATP PO', '2400');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Augmentin', 'Amoxicilline/Ac clavulanique', '100mg sirop', '01/10/12', 15, 'y1223', 'Antibiotique', 411, 'ATP PO', '40');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Augmentin', 'Amoxicilline/Ac clavulanique', '500mg', '01/04/12', 120, 'y2206', 'Antibiotique', 411, 'ATP PO', '840');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Augmentin', 'Amoxicilline/Ac clavulanique', '500mg/62,5mg', '01/03/11', 240, 'NA', 'Antibiotique', 411, 'ATP PO', '840');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Augmentin', 'Amoxicilline/Ac clavulanique', '1g per os', '01/04/12', 144, 'ag3160', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Augmentin', 'Amoxicilline/Ac clavulanique', '1g per os', '01/04/14', 96, 'BM4853', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Bactrim', 'Cotrimoxazole', '200mg sirop', '01/08/12', 6, 'f0667f71', 'Antibiotique', 411, 'ATP PO', '30');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Bactrim', 'Cotrimoxazole', '400mg', '01/03/14', 200, 'f1011f71', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Bristopen', 'exacilline', '500mg cpés', '01/07/11', 1320, '9k56097', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Ciprofloxacine', 'Ciprofloxacine', '500mg per os', '01/05/13', 100, 'y4031', 'Antibiotique', 411, 'ATP PO', '224');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Clamoxyl', 'Amoxicilline', '500mg', '01/08/14', 636, '1511', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('doxycycline', 'doxycycline', '100mg cpés', 'juin-13', 1000, 'chmp', 'Anti paludéen', 411, 'ATP PO', '1680');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('doxycycline', 'doxycycline', '100mg cpés', 'juin-12', 60, 'op167', 'Anti paludéen', 411, 'ATP PO', '1680');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Metronidazole/Flagyl', 'Metronidazole', '125mg sirop', '01/03/12', 6, '91', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Noroxine', 'norfloxacine', '400mg cpés', '01/05/11', 200, 'v6879', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Oflocet', 'Ofloxacine', '200mg per os', '01/09/12', 70, '7d31e', 'Antibiotique', 411, 'ATP PO', '80');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Oflocet', 'Ofloxacine', '200mg per os', '02/09/12', 50, '7d31j', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Orelox', 'cefpodoxime', '40mg sirop', '01/10/12', 4, 'ogc9a', 'Antibiotique', 411, 'ATP PO', '10');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Oroken', 'cefixime', '100mg sirop', '01/07/11', 4, '316', 'Antibiotique', 411, 'ATP PO', '10');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('PYOSTACINE', 'PRISTINAMYCINE', 'comp 500mg', '01/10/13', 320, 'e1907', 'Antibiotique', 411, 'ATP PO', '1100');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('RIFADINE', 'rifampicine', 'comp 300mg', '01/12/12', 120, 'a0137', 'Antibiotique', 411, 'ATP PO', '360');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Rovamycine', 'Rovamycine', '3millions po', '01/04/13', 200, '959', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Rulid', 'Roxithromicine', '50mg cpés', '01/04/12', 70, '9ha3c', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Rulid', 'Roxithromicine', '50mg cpés', '01/01/12', 20, '8h59g', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Rulid', 'Roxithromicine', '50mg cpés', '01/07/12', 10, '9fe1a', 'Antibiotique', 411, 'ATP PO', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Amoxicilline', 'Amoxicilline', '1g iv', '01/04/14', 200, '104183', 'Antibiotique', 412, 'ATB IV', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Augmentin', 'Amoxicilline/Ac clavulanique', '1g inj', '01/09/12', 250, '1S4019', 'Antibiotique', 412, 'ATB IV', '90');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Augmentin', 'Amoxicilline/Ac clavulanique', '500mg inj', '01/11/12', 170, '507510', 'Antibiotique', 412, 'ATB IV', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Augmentin', 'Amoxicilline/Ac clavulanique', '2g/200ml', '01/06/11', 250, '4353354', 'Antibiotique', 412, 'ATB IV', '84');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Ceftriaxone', 'Ceftriaxone', '1g', 'fev-12', 75, '902051', 'Antibiotique', 412, 'ATB IV', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Ceftriaxone', 'Ceftriaxone', '1g', '01/09/13', 25, '9368', 'Antibiotique', 412, 'ATB IV', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Gentalline', 'Gentalline', '40mg', '01/04/12', 200, '90366', 'Antibiotique', 412, 'ATB IV', '80');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('METRONIDAZOLE', 'METRONIDAZOLE', 'inj 500mg', '01/04/13', 40, '0203a231', 'Antibiotique', 412, 'ATB IV', '62');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Orbenine', 'Cloxacilline', '1g', '01/03/11', 39, '96001', 'Antibiotique', 412, 'ATB IV', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('REYATAZ', 'ATAZANAVIR', 'comprimés 300mg', 'dec-2011', 60, '0e61345', 'Antiviral-trithérapie', 412, 'ATB IV', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Vancomycine', 'Vancomycine', '500mg', '31/08/12', 100, 'cb0070', 'Antibiotique', 412, 'ATB IV', '20');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('DIPRIVAN', 'PROPOFOL', 'inj 1%/50ml', '01/03/11', 80, 'ga986', 'Anesthésie IV', 413, 'ANESTHESIE', '16');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('DOBUTAMINE', 'DOBUTAMINE', '250mg', '01/06/12', 20, 'f1001', 'Amine sympatomimetique', 413, 'HYPNOTIQUE', '40');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('DOPAMINE', 'DOPAMINE', 'inj 200mg/5ml', '01/04/12', 50, 'h1010', 'Amine sympatomimetique', 413, 'HYPNOTIQUE', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('ETOMIDATE-HYPNOMIDATE', 'ETOMIDATE', 'inj 2mg/ml', '01/04/12', 20, '9db4f00', 'Anesthésie IV', 413, 'HYPNOTIQUE', '25');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('Glucose 30% 10ml', 'GLUCOSE', 'amp 10ml', '01/03/13', 50, '110073', 'Electrolytes', 413, 'ANESTHESIE', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('NAROPEINE', 'ropivacaine', '7,5mg/ml', '01/04/12', 30, 'l01947', 'ALR', 413, 'ANESTHESIE', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('NAROPEINE', 'ropivacaine', '2mg/ml', '01/10/12',100, 'lK1472', 'ALR', 413, 'ANESTHESIE', 'NA');
+
+insert into caisses_medicaments(product_name,dci,forme_dosage,DLU,quantity,id_lot,classe_therapeutique,num_caisse,caisse,dotation_U7)
+values('PARACETAMOL/Doliprane', 'paracetamol', 'sachets 150mg', '01/06/14', 120, 'n0947', 'Antalgique', 413, 'ANESTHESIE', 'NA');

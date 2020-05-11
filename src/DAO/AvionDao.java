@@ -1,10 +1,6 @@
 package DAO;
 
-import java.util.ArrayList;
-import java.util.SplittableRandom;
-
-import app.transport.Avion;
-import javafx.collections.FXCollections;
+import MODEL.transport.Avion;
 import javafx.collections.ObservableList;
 
 public interface AvionDao {

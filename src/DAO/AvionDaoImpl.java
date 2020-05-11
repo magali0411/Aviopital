@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import app.transport.Avion;
+import MODEL.transport.Avion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
