@@ -1,4 +1,4 @@
-package dao;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,10 +9,8 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import app.colis.Caisse;
-import app.colis.ColisMedicament;
 import app.colis.ColisStructure;
 import app.hopital.Materiel;
-import app.hopital.Medicament;
 import app.hopital.Structure;
 
 public class ColisDaoImpl implements ColisDao{

@@ -34,20 +34,36 @@ public class View {
         return root;
     }
 
-    public void setRoot(BorderPane root) {
-        this.root = root;
-    }
-
-    public void setLog(Label log) {
-        this.log = log;
-    }
-
     public Plane getPlane() {
         return plane;
     }
 
     public void setPlane(Plane plane) {
         this.plane = plane;
+    }
+
+    public ColisStructure getColisStructure() {
+        return colisStructure;
+    }
+
+    public void setColisStructure(ColisStructure colisStructure) {
+        this.colisStructure = colisStructure;
+    }
+
+    public ColisMedicament getColisMedicament() {
+        return colisMedicament;
+    }
+
+    public void setColisMedicament(ColisMedicament colisMedicament) {
+        this.colisMedicament = colisMedicament;
+    }
+
+    public void setRoot(BorderPane root) {
+        this.root = root;
+    }
+
+    public void setLog(Label log) {
+        this.log = log;
     }
 
     /*

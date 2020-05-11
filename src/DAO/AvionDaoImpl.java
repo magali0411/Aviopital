@@ -1,15 +1,15 @@
-package dao;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 import app.transport.Avion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class AvionDaoImpl implements AvionDao {
 	
@@ -205,9 +205,9 @@ public class AvionDaoImpl implements AvionDao {
 	
 
 	@Override
-	public ArrayList<String> getAllName() {
+	public ObservableList<String> getAllName() {
 		
-		ArrayList<String> listName = new ArrayList<>();
+		ObservableList<String> listName = FXCollections.observableArrayList();
 		
 		String query = "Select name "
 				+ "FROM AVIONS " ;

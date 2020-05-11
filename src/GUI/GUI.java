@@ -43,7 +43,6 @@ public class GUI extends Application {
 
 			primaryStage.setScene(new Scene(view.getRoot()));
 
-			controller.initModel();
 
 		}
 	    

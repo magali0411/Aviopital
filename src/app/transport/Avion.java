@@ -64,6 +64,14 @@ public class Avion extends Transport implements Serializable{
 		this.fuelBrun = fuelBrun;
 		this.cruiseSpeed = cruiseSpeed;
 		this.palletPos = palletPos;
+
+		this.qty = 1;
+
+		this.currentVolume = 0;
+		this.currentLoad = 0;
+
+		this.volumeTot = volume;
+		this.LoadTot = maxLoad;
 	}
 	
 	
@@ -97,7 +105,6 @@ public class Avion extends Transport implements Serializable{
 		super(name, listCaisses);
 	}
 
-	
 	public boolean fit ( Caisse caisse ) {
 		
 		int volTotal = 0 ;
@@ -121,10 +128,9 @@ public class Avion extends Transport implements Serializable{
 
 	public void modifyLoadAndVolume(int qty){
 		this.qty = qty;
-		volumeTot = qty * currentVolume;
-		LoadTot = qty * currentLoad;
+		volumeTot = qty * volume;
+		LoadTot = qty * maxLoad;
 	}
-	
 
 	public float getMaxLoad() {
 		return maxLoad;
@@ -132,6 +138,46 @@ public class Avion extends Transport implements Serializable{
 
 	public void setMaxLoad(float maxLoad) {
 		this.maxLoad = maxLoad;
+	}
+
+	public int getDorrSizeH() {
+		return dorrSizeH;
+	}
+
+	public void setDorrSizeH(int dorrSizeH) {
+		this.dorrSizeH = dorrSizeH;
+	}
+
+	public int getDorrSizeW() {
+		return dorrSizeW;
+	}
+
+	public void setDorrSizeW(int dorrSizeW) {
+		this.dorrSizeW = dorrSizeW;
+	}
+
+	public int getCargoHoldL() {
+		return cargoHoldL;
+	}
+
+	public void setCargoHoldL(int cargoHoldL) {
+		this.cargoHoldL = cargoHoldL;
+	}
+
+	public int getCargoHoldW() {
+		return cargoHoldW;
+	}
+
+	public void setCargoHoldW(int cargoHoldW) {
+		this.cargoHoldW = cargoHoldW;
+	}
+
+	public int getCargoHoldH() {
+		return cargoHoldH;
+	}
+
+	public void setCargoHoldH(int cargoHoldH) {
+		this.cargoHoldH = cargoHoldH;
 	}
 
 	public int getVolume() {
@@ -174,46 +220,6 @@ public class Avion extends Transport implements Serializable{
 		this.fuelBrun = fuelBrun;
 	}
 
-	public String getPalletPos() {
-		return palletPos;
-	}
-
-	public void setPalletPos(String palletPos) {
-		this.palletPos = palletPos;
-	}
-
-	public int getDorrSizeH() {
-		return dorrSizeH;
-	}
-
-	public void setDorrSizeH(int dorrSizeH) {
-		this.dorrSizeH = dorrSizeH;
-	}
-
-	public int getDorrSizeW() {
-		return dorrSizeW;
-	}
-
-	public void setDorrSizeW(int dorrSizeW) {
-		this.dorrSizeW = dorrSizeW;
-	}
-
-	public int getCargoHoldW() {
-		return cargoHoldW;
-	}
-
-	public void setCargoHoldW(int cargoHoldW) {
-		this.cargoHoldW = cargoHoldW;
-	}
-
-	public int getCargoHoldH() {
-		return cargoHoldH;
-	}
-
-	public void setCargoHoldH(int cargoHoldH) {
-		this.cargoHoldH = cargoHoldH;
-	}
-
 	public int getCruiseSpeed() {
 		return cruiseSpeed;
 	}
@@ -222,12 +228,12 @@ public class Avion extends Transport implements Serializable{
 		this.cruiseSpeed = cruiseSpeed;
 	}
 
-	public int getCargoHoldL() {
-		return cargoHoldL;
+	public String getPalletPos() {
+		return palletPos;
 	}
 
-	public void setCargoHoldL(int cargoHoldL) {
-		this.cargoHoldL = cargoHoldL;
+	public void setPalletPos(String palletPos) {
+		this.palletPos = palletPos;
 	}
 
 	public int getQty() {
@@ -236,6 +242,42 @@ public class Avion extends Transport implements Serializable{
 
 	public void setQty(int qty) {
 		this.qty = qty;
+	}
+
+	public int getCurrentVolume() {
+		return currentVolume;
+	}
+
+	public void setCurrentVolume(int currentVolume) {
+		this.currentVolume = currentVolume;
+	}
+
+	public float getCurrentLoad() {
+		return currentLoad;
+	}
+
+	public void setCurrentLoad(float currentLoad) {
+		this.currentLoad = currentLoad;
+	}
+
+	public int getVolumeTot() {
+		return volumeTot;
+	}
+
+	public void setVolumeTot(int volumeTot) {
+		this.volumeTot = volumeTot;
+	}
+
+	public float getLoadTot() {
+		return LoadTot;
+	}
+
+	public void setLoadTot(float loadTot) {
+		LoadTot = loadTot;
+	}
+
+	public static Logger getLogger() {
+		return logger;
 	}
 
 	@Override

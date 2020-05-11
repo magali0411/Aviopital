@@ -1,21 +1,34 @@
 package GUI;
 
+import DAO.Factory;
+import app.transport.Avion;
+import com.sun.glass.ui.Accessible;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
 import GUI.ModelTemp.PlaneTemp;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+
+import java.util.ArrayList;
+
+import static DAO.Factory.getInstance;
 
 
 public class Controller implements EventHandler {
 
     private View view;
-    private PlaneTemp plane;
+    private Avion avion;
+
+    private static Factory factory;
 
     public Controller() {
+        this.factory = getInstance();
     }
+
+    /*
+     * ------------------------- GETTER AND SETTER ------------------------
+     */
 
     public void setView(View view) {
         this.view = view;
@@ -25,21 +38,39 @@ public class Controller implements EventHandler {
      * ----------------------------- FUNCTIONS ---------------------------
      */
 
-    public void initModel() {
-        this.plane = new PlaneTemp();
-    }
-
     @Override
     public void handle(Event event) {
 
-        if (event.getSource() instanceof ChoiceBox) {
-            ChoiceBox<String> choiceBox = (ChoiceBox) event.getSource();
+        // Handling of the plane comboBox
+        if (event.getSource() instanceof ComboBox) {
+            ComboBox<String> comboBox = (ComboBox) event.getSource();
+            if (comboBox.getId() == "planeChoice") {
+                DAO.AvionDaoImpl avionDao = DAO.AvionDaoImpl.getInstance();
+                if (event.getEventType() == comboBox.ON_SHOWING) {
+                    ObservableList<String> planesName = avionDao.getAllName();
+                    comboBox.setItems(planesName);
+                }
+                if (event.getEventType() == ActionEvent.ACTION) {
+                    try {
+                        avion = avionDao.findByName(comboBox.getValue());
+                        view.getPlane().getDoorHeight().setText("H: " + String.valueOf(avion.getDorrSizeH()));
+                        view.getPlane().getDoorWidth().setText("W: " + avion.getDorrSizeW());
+                        view.getPlane().getCargoHoldHeight().setText("H: " + avion.getCargoHoldH());
+                        view.getPlane().getCargoHoldWidth().setText("W: " + avion.getCargoHoldW());
+                        view.getPlane().getCargoHoldLength().setText("L: " + avion.getCargoHoldL());
+                        view.getPlane().getVolumeLabel().setText(avion.getCurrentVolume() + " / " + avion.getVolume() + " m3");
+                        view.getPlane().getLoadLabel().setText(avion.getCurrentLoad() + " / " + avion.getMaxLoad() + " t");
 
-            if (((ChoiceBox) event.getSource()).getId() == "planeChoice") {
-                System.out.println(choiceBox.getValue());
+                        TextField quantity = (TextField) view.getRoot().getScene().lookup("#quantity");
+                        quantity.setDisable(false);
+
+                    } catch (Exception e) {
+                    }
+                }
             }
         }
 
+        // Handling of the quantity textfield
         if (event.getSource() instanceof TextField) {
             TextField textField = (TextField) event.getSource();
             if (textField.getId() == "quantity") {
@@ -47,16 +78,18 @@ public class Controller implements EventHandler {
                 try {
                     qty = Integer.parseInt(textField.getCharacters().toString());
                     if (qty != 0) {
-                        plane.modifyLoadAndVolume(qty);
-                        view.getPlane().getLoadLabel().setText(String.valueOf(plane.getCurrentLoad()) + " / " +
-                                String.valueOf(plane.getLoadTot()) + " t");
-                        view.getPlane().getVolumeLabel().setText(String.valueOf(plane.getCurrentVolume()) + " / "
-                                + String.valueOf(plane.getVolumeTot()) + " m3");
+                        // modify the model
+                        avion.modifyLoadAndVolume(qty);
+                        // modify the view
+                        view.getPlane().getLoadLabel().setText(String.valueOf(avion.getCurrentLoad()) + " / " +
+                                String.valueOf(avion.getLoadTot()) + " t");
+                        view.getPlane().getVolumeLabel().setText(String.valueOf(avion.getCurrentVolume()) + " / "
+                                + String.valueOf(avion.getVolumeTot()) + " m3");
                     } else {
-                        textField.setText(String.valueOf(plane.getQty()));
+                        textField.setText(String.valueOf(avion.getQty()));
                     }
                 } catch (NumberFormatException e) {
-                    textField.setText(String.valueOf(plane.getQty()));
+                    textField.setText(String.valueOf(avion.getQty()));
                 }
 
             }
@@ -72,123 +105,112 @@ public class Controller implements EventHandler {
                 case "DAHMO":
                     // Model
                     if (checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() + 45.6);
-                        plane.setCurrentLoad(plane.getCurrentLoad() + 8.2);
-                        System.out.println((String.valueOf(plane.getCurrentLoad())));
+                        avion.setCurrentVolume(avion.getCurrentVolume() + 45);
+                        avion.setCurrentLoad(avion.getCurrentLoad() + 8.2f);
                     } else if (!checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() - 45.6);
-                        plane.setCurrentLoad(plane.getCurrentLoad() - 8.2);
+                        avion.setCurrentVolume(avion.getCurrentVolume() - 45);
+                        avion.setCurrentLoad(avion.getCurrentLoad() - 8.2f);
                     }
                     break;
                 case "HCOption":
                     if (checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() + 51.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() + 9);
-                        System.out.println((String.valueOf(plane.getCurrentLoad())));
+                        avion.setCurrentVolume(avion.getCurrentVolume() + 51);
+                        avion.setCurrentLoad(avion.getCurrentLoad() + 9f);
                     } else if (!checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() - 51.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() - 9);
+                        avion.setCurrentVolume(avion.getCurrentVolume() - 51);
+                        avion.setCurrentLoad(avion.getCurrentLoad() - 9f);
                     }
                     break;
                 case "DAHMOComplet":
                     if (checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() + 75.5);
-                        plane.setCurrentLoad(plane.getCurrentLoad() + 13.);
-                        System.out.println((String.valueOf(plane.getCurrentLoad())));
+                        avion.setCurrentVolume(avion.getCurrentVolume() + 76);
+                        avion.setCurrentLoad(avion.getCurrentLoad() + 13.f);
                     } else if (!checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() - 75.5);
-                        plane.setCurrentLoad(plane.getCurrentLoad() - 13);
+                        avion.setCurrentVolume(avion.getCurrentVolume() - 76);
+                        avion.setCurrentLoad(avion.getCurrentLoad() - 13f);
                     }
                     break;
                 case "DAC":
                     // Model
                     if (checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() + 74.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() + 14.5);
-                        System.out.println((String.valueOf(plane.getCurrentLoad())));
+                        avion.setCurrentVolume(avion.getCurrentVolume() + 74);
+                        avion.setCurrentLoad(avion.getCurrentLoad() + 14.5f);
                     } else if (!checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() - 74.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() - 14.5);
+                        avion.setCurrentVolume(avion.getCurrentVolume() - 74);
+                        avion.setCurrentLoad(avion.getCurrentLoad() - 14.5f);
                     }
                     break;
                 case "DACComplet":
                     if (checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() + 111.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() + 19.5);
-                        System.out.println((String.valueOf(plane.getCurrentLoad())));
+                        avion.setCurrentVolume(avion.getCurrentVolume() + 111);
+                        avion.setCurrentLoad(avion.getCurrentLoad() + 19.5f);
                     } else if (!checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() - 111);
-                        plane.setCurrentLoad(plane.getCurrentLoad() - 19.5);
+                        avion.setCurrentVolume(avion.getCurrentVolume() - 111);
+                        avion.setCurrentLoad(avion.getCurrentLoad() - 19.5f);
                     }
                     break;
                 case "DAC_hot":
                     if (checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() + 2.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() + 0.6);
-                        System.out.println((String.valueOf(plane.getCurrentLoad())));
+                        avion.setCurrentVolume(avion.getCurrentVolume() + 2);
+                        avion.setCurrentLoad(avion.getCurrentLoad() + 0.6f);
                     } else if (!checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() - 2.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() - 0.6);
+                        avion.setCurrentVolume(avion.getCurrentVolume() - 2);
+                        avion.setCurrentLoad(avion.getCurrentLoad() - 0.6f);
                     }
                     break;
                 case "DAC_cold":
                     if (checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() + 6.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() + 0.6);
-                        System.out.println((String.valueOf(plane.getCurrentLoad())));
+                        avion.setCurrentVolume(avion.getCurrentVolume() + 6);
+                        avion.setCurrentLoad(avion.getCurrentLoad() + 0.6f);
                     } else if (!checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() - 6.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() - 0.6);
+                        avion.setCurrentVolume(avion.getCurrentVolume() - 6);
+                        avion.setCurrentLoad(avion.getCurrentLoad() - 0.6f);
                     }
                     break;
                 case "baseVie":
                     if (checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() + 41.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() + 11.);
-                        System.out.println((String.valueOf(plane.getCurrentLoad())));
+                        avion.setCurrentVolume(avion.getCurrentVolume() + 41);
+                        avion.setCurrentLoad(avion.getCurrentLoad() + 11f);
                     } else if (!checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() - 41.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() - 11.);
+                        avion.setCurrentVolume(avion.getCurrentVolume() - 41);
+                        avion.setCurrentLoad(avion.getCurrentLoad() - 11f);
                     }
                     break;
                 case "MLongueDuree":
                     if (checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() + 59.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() + 13.6);
-                        System.out.println((String.valueOf(plane.getCurrentLoad())));
+                        avion.setCurrentVolume(avion.getCurrentVolume() + 59);
+                        avion.setCurrentLoad(avion.getCurrentLoad() + 13.6f);
                     } else if (!checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() - 59.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() - 13.6);
+                        avion.setCurrentVolume(avion.getCurrentVolume() - 59);
+                        avion.setCurrentLoad(avion.getCurrentLoad() - 13.6f);
                     }
                     break;
                 case "base_hot":
                     if (checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() + 2.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() + 0.4);
-                        System.out.println((String.valueOf(plane.getCurrentLoad())));
+                        avion.setCurrentVolume(avion.getCurrentVolume() + 2);
+                        avion.setCurrentLoad(avion.getCurrentLoad() + 0.4f);
                     } else if (!checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() - 2.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() - 0.4);
+                        avion.setCurrentVolume(avion.getCurrentVolume() - 2);
+                        avion.setCurrentLoad(avion.getCurrentLoad() - 0.4f);
                     }
                     break;
                 case "base_cold":
                     if (checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() + 6.);
-                        plane.setCurrentLoad(plane.getCurrentLoad() + 0.7);
-                        System.out.println((String.valueOf(plane.getCurrentLoad())));
+                        avion.setCurrentVolume(avion.getCurrentVolume() + 6);
+                        avion.setCurrentLoad(avion.getCurrentLoad() + 0.7f);
                     } else if (!checkBox.isSelected()) {
-                        plane.setCurrentVolume(plane.getCurrentVolume() - 6);
-                        plane.setCurrentLoad(plane.getCurrentLoad() - 0.7);
+                        avion.setCurrentVolume(avion.getCurrentVolume() - 6);
+                        avion.setCurrentLoad(avion.getCurrentLoad() - 0.7f);
                     }
                     break;
 
 
             }
             // View
-            view.getPlane().getVolumeLabel().setText(String.valueOf(plane.getCurrentVolume()) + " / " +
-                    String.valueOf(plane.getVolumeTot()) + " m3");
-            view.getPlane().getLoadLabel().setText(String.valueOf(plane.getCurrentLoad()) + " / " +
-                    String.valueOf(plane.getLoadTot()) + " t");
+            view.getPlane().getVolumeLabel().setText(String.valueOf(avion.getCurrentVolume()) + " / " +
+                    String.valueOf(avion.getVolumeTot()) + " m3");
+            view.getPlane().getLoadLabel().setText(String.valueOf(avion.getCurrentLoad()) + " / " +
+                    String.valueOf(avion.getLoadTot()) + " t");
         }
     }
 

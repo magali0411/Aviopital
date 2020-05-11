@@ -1,9 +1,11 @@
-package dao;
+package DAO;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.SplittableRandom;
 
 import app.transport.Avion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public interface AvionDao {
 	
@@ -32,8 +34,8 @@ public interface AvionDao {
 	 * Méthode pour récupérer la liste du nom de tous les avions
 	 * @return
 	 */
-	ArrayList<String> getAllName();
-	
-	
+	ObservableList<String> getAllName();
+
+
 
 }
