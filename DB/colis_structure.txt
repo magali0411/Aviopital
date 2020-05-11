@@ -1,0 +1,74 @@
+drop table colis;
+create table colis(id int not null auto_increment, affectataire varchar(20), module varchar(20), nominal_optionnel varchar(20), secteur varchar(20), nature_colis  varchar(20), num_colis int(5), designation_colis varchar(30), precision_articles varchar(50), dim varchar(20), volume float(5), poids int(5), observations varchar(20));
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','Optionnel','NA','Bac',16,'NA','NA','120x80x100',0.96,0,'vide');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','Comp. E2','NA','(L) Stock logistique','Bac',17,'Soutien logistique','echaffaudage + 3 kits elec tm36/E2 + epsac','120x80x100',0.96,112,'à compléter');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','Optionnel','(J) Pharmacie-labo','Bac',18,'mobilier technique','etageres noires','120x80x100',0.96,120,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','NA','(J) Pharmacie-labo','Bac',19,'mobilier technique','tables+etageres','120x80x100',0.96,145,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','NA','(F) Réanimation','Bac',20,'mobilier technique','dessertes+chariots','120x80x100',0.96,131,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','NA','(A) Stérilisation','Bac',21,'mobilier technique','NA','120x80x100',0.96,192,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','Optionnel','(L) Stock logistique','Bac',22,'soutien logistique','outillage','120x80x100',0.96,150,'à compléter');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','NA','(L) Stock logistique','Bac',27,'soutien logistique','6 VMC + cloisons + bandes raccord tente','120x80x100',0.96,180,'à compléter');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','NA','(N) Douche patients','Bac',28,'entretien - ménage','1 lave-linge + 1 seche-linge','120x80x100',0.96,164,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','Optionnel','(J) Pharmacie-labo','Bac',29,'mobilier technique','caisses grises','120x80x100',0.96,146,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','NA','(J) Pharmacie-labo','Bac',30,'équipement laboratoire','2 frigos + 2 tables','120x80x100',0.96,112,'à compléter');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','Optionnel','(L) Stock logistique','Bac',31,'distribution electrique','eclairage ex TMB','120x80x100',0.96,204,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','Optionnel','(L) Stock logistique','Bac',32,'distribution electrique','reserve cables + accessoires','120x80x100',0.96,234,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','NA','(L) Stock logistique','Bac',33,'distribution electrique','armoires','120x80x100',0.96,181,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','NA','(L) Stock logistique','Bac',34,'distribution electrique','cables + accessoires','120x80x100',0.96,315,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','NA','(L) Stock logistique','Bac',40,'distribution eau + effluents','tuyauteries','120x80x100',0.96,212,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','NA','(L) Stock logistique','Bac',41,'distribution eau + effluents','pompes + tuyaux + accessoires','120x80x100',0.96,143,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','Comp. E2','NA','(N) Douche patients','Bac',42,'distribution eau + effluents','douches patients','120x80x100',0.96,135,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','Optionnel','(L) Stock logistique','Bac',43,'distribution eau + effluents','tuyauteries','120x80x100',0.96,169,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','Comp. E2','Optionnel','(L) Stock logistique','Bac',44,'entretien - ménage','2 lave-linges','120x80x100',0.96,162,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','NA','(O) Hébergement 1','Bac',45,'mobilier hébergement','5 portes SNOG + 4 perches de perf','120x80x100',0.96,243,'à compléter');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','Options','(I) Imagerie','Bac',46,'équipement imagerie médicale','imprimante film radiographique','120x80x100',0.96,146,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','Options','(L) Stock logistique','Bac',49,'mobilier technique','4 tables GM + 3 gueridons inox + 4 chaises','120x80x100',0.96,167,'complet');
+
+insert into colis(affectataire,module,nominal_optionnel,secteur,nature_colis,num_colis,designation_colis,precision_articles,dim,volume,poids,observations)
+values('DAC','E Base','P.froids','(L) Stock logistique','Bac',50,'chauffage','gaines chauffage + polaires','120x80x100',0.96,96,'complet');

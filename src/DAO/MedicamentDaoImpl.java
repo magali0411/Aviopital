@@ -8,9 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import app.colis.Caisse;
-import app.colis.ColisMedicament;
-import app.hopital.Medicament;
+import MODEL.colis.Caisse;
+import MODEL.colis.ColisMedicament;
+import MODEL.hopital.Medicament;
 
 public class MedicamentDaoImpl implements MedicamentDao{
 	

@@ -1,4 +1,4 @@
-package app.Exports;
+package MODEL.Exports;
 
 public class ExportAsPDF extends Exports {
 }

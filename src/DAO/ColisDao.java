@@ -2,7 +2,7 @@ package DAO;
 
 import java.util.ArrayList;
 
-import app.colis.Caisse;
+import MODEL.colis.Caisse;
 
 public interface ColisDao {
 	

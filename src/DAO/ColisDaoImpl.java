@@ -8,10 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import app.colis.Caisse;
-import app.colis.ColisStructure;
-import app.hopital.Materiel;
-import app.hopital.Structure;
+import MODEL.colis.Caisse;
+import MODEL.colis.ColisStructure;
+import MODEL.hopital.Materiel;
+import MODEL.hopital.Structure;
 
 public class ColisDaoImpl implements ColisDao{
 	
@@ -187,44 +187,44 @@ public class ColisDaoImpl implements ColisDao{
 		return listNameCaisse;
 }
 
-@Override
-public ArrayList<String> getAllPFroid() {
-	ArrayList<String> listNameCaisse = new ArrayList<>();
-	
+	@Override
+	public ArrayList<String> getAllPFroid() {
+		ArrayList<String> listNameCaisse = new ArrayList<>();
 
-	String requete =  "Select nominal_optionnel, designations "
-			+ "FROM COLIS "
-			+ "WHERE nominal_optionnel = ? ";
-	
-	PreparedStatement preparedStatment;
-	
-	try {
-		connexion = f.getInstance().getConnection();
-		
-		preparedStatment = connexion.prepareStatement(requete);
 
-		preparedStatment.setString(1, "P. froids");
+		String requete =  "Select nominal_optionnel, designations "
+				+ "FROM COLIS "
+				+ "WHERE nominal_optionnel = ? ";
 
-		preparedStatment.execute();
+		PreparedStatement preparedStatment;
 
-		ResultSet resultSet = preparedStatment.getResultSet();
-			
-			while ( resultSet.next() ) {
-				
-				String designations = resultSet.getString("designations");
-				
-				listNameCaisse.add(designations);
-			}
+		try {
+			connexion = f.getInstance().getConnection();
 
-			preparedStatment.close();
-		
-		
-	} catch (Exception e) {
-		logger.severe( e.getClass().getName() + ": " + e.getMessage() );
-	}
-	
-		return listNameCaisse;
-	}
+			preparedStatment = connexion.prepareStatement(requete);
+
+			preparedStatment.setString(1, "P. froids");
+
+			preparedStatment.execute();
+
+			ResultSet resultSet = preparedStatment.getResultSet();
+
+				while ( resultSet.next() ) {
+
+					String designations = resultSet.getString("designations");
+
+					listNameCaisse.add(designations);
+				}
+
+				preparedStatment.close();
+
+
+		} catch (Exception e) {
+			logger.severe( e.getClass().getName() + ": " + e.getMessage() );
+		}
+
+			return listNameCaisse;
+		}
 
 	@Override
 	public ArrayList<String> getAllOther() {

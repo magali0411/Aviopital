@@ -3,6 +3,7 @@ package GUI;
 import DAO.Factory;
 import app.transport.Avion;
 //import com.sun.glass.ui.Accessible;
+import MODEL.transport.Avion;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
