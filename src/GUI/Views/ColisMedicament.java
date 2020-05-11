@@ -1,5 +1,6 @@
 package GUI.Views;
 
+import DAO.MedicamentDaoImpl;
 import GUI.Controller;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -42,7 +43,9 @@ public class ColisMedicament extends ViewsModel{
 
     public ListView<String> addPreselectedDrugs(){
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll("Medicamen1", "Medicament2");
+        
+        listView.getItems().addAll(MedicamentDaoImpl.getInstance().getAllName());
+        //listView.getItems().addAll("Medicamen1", "Medicament2");
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         this.preselectedDrugs = listView;
         return listView;
@@ -50,6 +53,7 @@ public class ColisMedicament extends ViewsModel{
 
     public ListView<String> addAddingDrugs(){
         ListView<String> listView = new ListView<>();
+        //listView.getItems().addAll(MedicamentDaoImpl.getInstance().getAllName());
         listView.getItems().addAll("Medicamen1bis", "Medicament2bis");
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         this.addingDrugs = listView;

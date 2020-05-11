@@ -1,5 +1,6 @@
 package GUI.Views;
 
+import DAO.ColisDaoImpl;
 import GUI.Controller;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -42,7 +43,8 @@ public class ColisStructure extends ViewsModel {
     public ListView<String> addPreSelectedColis(){
 
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll("ColisStructure 1");
+        //listView.getItems().addAll("ColisStructure 1");
+        listView.getItems().addAll(ColisDaoImpl.getInstance().getAllOther());
         setColisPreSelected(listView);
 
         return listView;
@@ -51,7 +53,8 @@ public class ColisStructure extends ViewsModel {
     public ListView<String> addAddingColis(){
 
         ListView<String> listView = new ListView<>();
-        listView.getItems().addAll("ColisStructure 1bis");
+        //listView.getItems().addAll("ColisStructure 1bis");
+        listView.getItems().addAll(ColisDaoImpl.getInstance().getAllCaisseName());
         setColisPreSelected(listView);
 
         return listView;
