@@ -265,6 +265,44 @@ public ArrayList<String> getAllPFroid() {
 		return listNameCaisse;
 	}
 	
+	public ArrayList<String> getAllBase() {
+		ArrayList<String> listNameCaisse = new ArrayList<>();
+		
+
+		String requete =  "Select module, designations "
+				+ "FROM COLIS "
+				+ "WHERE module = ? ";
+		
+		PreparedStatement preparedStatment;
+		
+		try {
+			connexion = f.getInstance().getConnection();
+			
+			preparedStatment = connexion.prepareStatement(requete);
+
+			preparedStatment.setString(1, "E Base");
+
+			preparedStatment.execute();
+
+			ResultSet resultSet = preparedStatment.getResultSet();
+				
+				while ( resultSet.next() ) {
+					
+					String designations = resultSet.getString("designations");
+					
+					listNameCaisse.add(designations);
+				}
+
+				preparedStatment.close();
+			
+			
+		} catch (Exception e) {
+			logger.severe( e.getClass().getName() + ": " + e.getMessage() );
+		}
+		
+			return listNameCaisse;
+		}
+	
 
 	@Override
 	public Caisse getCaisseByDesignation(String designation) {

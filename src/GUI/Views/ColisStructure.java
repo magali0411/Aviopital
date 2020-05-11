@@ -44,7 +44,7 @@ public class ColisStructure extends ViewsModel {
 
         ListView<String> listView = new ListView<>();
         //listView.getItems().addAll("ColisStructure 1");
-        listView.getItems().addAll(ColisDaoImpl.getInstance().getAllOther());
+        listView.getItems().addAll(ColisDaoImpl.getInstance().getAllBase());
         setColisPreSelected(listView);
 
         return listView;
